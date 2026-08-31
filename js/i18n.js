@@ -77,6 +77,15 @@
       brand_gac_honda: 'GAC Honda', brand_hongqi: 'FAW Hongqi', brand_yadea: 'Yadea',
       brand_jd: 'JD.com', brand_tmall: 'Tmall', brand_wuliangye: 'Wuliangye',
 
+      pcat_internet: 'Internet Brands',
+      pcat_appliance: 'Leading Home Appliance Brands',
+      pcat_passenger: 'Passenger car and commercial vehicle brands',
+      pcat_new_energy: 'Top New Energy Brands',
+      pcat_battery: 'Leading Power Battery Brands',
+      pcat_joint: 'Joint Venture Brands',
+      pcat_two_wheeler: 'Leading Electric Two-Wheeler Brand',
+      pcat_since: 'BEGIN WITH',
+
       case_eyebrow: 'MARKETING CASE', case_title: 'Systematic Experience & Communication',
       case_desc: 'How we evolve with our partners from market education to global expansion.',
       tag_auto: 'Automotive', tag_appliance: 'Home Appliances', tag_energy: 'New Energy', tag_multi: 'Multi-Industry',
@@ -111,14 +120,6 @@
       tc8: 'Overseas markets', tc9: 'Scene implementation', tc10: 'Breakthrough team',
       tc11: 'Operation team', tc12: 'Support team',
       tg_support: 'Support Team', tg_breakthrough: 'Breakthrough Team', tg_operation: 'Operation Team',
-
-      ach_eyebrow: 'OUR ACHIEVEMENTS',
-      ach_domestic: 'Domestic', ach_overseas: 'Overseas',
-      ach_title: 'Creating value for clients continuously for 24 years',
-      ach_card1_title: 'Events Per Year', ach_card1_desc: 'Domestic event execution peak annual average',
-      ach_card2_title: 'Channel Stores', ach_card2_desc: 'Midea peak nationwide store network coverage',
-      ach_card3_title: 'Partner Brands', ach_card3_desc: 'Long-term trusted brands worldwide',
-      ach_card4_title: 'Years of Experience', ach_card4_desc: 'Since 2002, continuous value creation',
 
       ct_eyebrow: 'THANKS', ct_title: 'Looking Forward to Starting Our Collaboration',
       ct_desc: "HEYDAY GROUP is ready to turn your brand's next chapter into an extraordinary experience.",
@@ -206,6 +207,15 @@
       brand_gac_honda: '廣汽本田', brand_hongqi: '一汽紅旗', brand_yadea: '雅迪',
       brand_jd: '京東', brand_tmall: '天貓', brand_wuliangye: '五糧液',
 
+      pcat_internet: '互聯網品牌',
+      pcat_appliance: '頭部家電品牌',
+      pcat_passenger: '乘用車及商用車品牌',
+      pcat_new_energy: '頭部新能源品牌',
+      pcat_battery: '頭部動力電池品牌',
+      pcat_joint: '合資品牌',
+      pcat_two_wheeler: '頭部電動兩輪品牌',
+      pcat_since: '始於',
+
       case_eyebrow: '營銷案例', case_title: '系統化體驗與傳播',
       case_desc: '我們如何與夥伴共同進化——從市場教育到全球拓展。',
       tag_auto: '汽車', tag_appliance: '家電', tag_energy: '新能源', tag_multi: '多行業',
@@ -240,14 +250,6 @@
       tc8: '海外市場', tc9: '場景落地', tc10: '突破團隊',
       tc11: '運營團隊', tc12: '保障團隊',
       tg_support: '保障團隊', tg_breakthrough: '突破團隊', tg_operation: '運營團隊',
-
-      ach_eyebrow: '我們的成就',
-      ach_domestic: '國內', ach_overseas: '海外',
-      ach_title: '24年持續為客戶創造價值',
-      ach_card1_title: '年均活動場次', ach_card1_desc: '國內活動執行峰值年均',
-      ach_card2_title: '渠道門店', ach_card2_desc: '美的全國門店網絡峰值覆蓋',
-      ach_card3_title: '合作品牌', ach_card3_desc: '長期信賴的全球品牌',
-      ach_card4_title: '從業年限', ach_card4_desc: '自2002年起持續創造價值',
 
       ct_eyebrow: '致謝', ct_title: '期待與您攜手啟程',
       ct_desc: 'HEYDAY GROUP 隨時準備將您品牌的下一個篇章打造成非凡體驗。',
@@ -335,6 +337,15 @@
       brand_gac_honda: 'GAC Honda', brand_hongqi: 'FAW Hongqi', brand_yadea: 'Yadea',
       brand_jd: 'JD.com', brand_tmall: 'Tmall', brand_wuliangye: 'Wuliangye',
 
+      pcat_internet: 'Интернет-бренды',
+      pcat_appliance: 'Ведущие бренды бытовой техники',
+      pcat_passenger: 'Легковые и коммерческие автомобили',
+      pcat_new_energy: 'Топ брендов новой энергетики',
+      pcat_battery: 'Ведущие бренды аккумуляторов',
+      pcat_joint: 'Совместные предприятия',
+      pcat_two_wheeler: 'Ведущий бренд электроскутеров',
+      pcat_since: 'С',
+
       case_eyebrow: 'МАРКЕТИНГОВЫЕ КЕЙСЫ', case_title: 'Системный опыт и коммуникация',
       case_desc: 'Как мы развиваемся вместе с партнёрами — от обучения рынка до глобальной экспансии.',
       tag_auto: 'Авто', tag_appliance: 'Бытовая техника', tag_energy: 'Новая энергетика', tag_multi: 'Разные отрасли',
@@ -360,13 +371,6 @@
       tc5: 'Анализ и оптимизация', tc6: 'Управление коммуникацией', tc7: 'Рыночная аналитика',
       tc8: 'Зарубежные рынки', tc9: 'Реализация сценариев', tc10: 'Команда прорыва',
       tc11: 'Операционная команда', tc12: 'Команда поддержки',
-
-      ach_eyebrow: 'НАШИ ДОСТИЖЕНИЯ',
-      ach_title: 'Создаём ценность для клиентов уже 24 года',
-      ach_card1_title: 'Мероприятий в год', ach_card1_desc: 'Пиковое среднегодовое число мероприятий в Китае',
-      ach_card2_title: 'Магазинов в сети', ach_card2_desc: 'Пиковый охват сети магазинов Midea по стране',
-      ach_card3_title: 'Брендов-партнёров', ach_card3_desc: 'Долгосрочно доверяющие бренды по всему миру',
-      ach_card4_title: 'Лет опыта', ach_card4_desc: 'Непрерывное создание ценности с 2002 года',
 
       ct_eyebrow: 'СПАСИБО', ct_title: 'Ждём начала сотрудничества',
       ct_desc: 'HEYDAY GROUP готова превратить следующую главу вашего бренда в выдающийся опыт.',
@@ -454,6 +458,15 @@
       brand_gac_honda: 'GAC Honda', brand_hongqi: 'FAW Hongqi', brand_yadea: 'Yadea',
       brand_jd: 'JD.com', brand_tmall: 'Tmall', brand_wuliangye: 'Wuliangye',
 
+      pcat_internet: "Internet brendlar",
+      pcat_appliance: "Yetakchi maishiy texnika brendlari",
+      pcat_passenger: "Yengil va tijorat avtomobillari brendlari",
+      pcat_new_energy: "Yetakchi yangi energiya brendlari",
+      pcat_battery: "Yetakchi quvvat batareykasi brendlari",
+      pcat_joint: "Qo'shma korxonalar",
+      pcat_two_wheeler: "Yetakchi elektr ikki g'ildirakli brendi",
+      pcat_since: "BOSHLANISH",
+
       case_eyebrow: 'MARKETING LOYIHALARI', case_title: 'Tizimli tajriba va kommunikatsiya',
       case_desc: "Bozorni o'rgatishdan global kengayishgacha hamkorlarimiz bilan qanday rivojlanamiz.",
       tag_auto: 'Avto', tag_appliance: 'Maishiy texnika', tag_energy: 'Yangi energiya', tag_multi: "Ko'p tarmoqli",
@@ -479,13 +492,6 @@
       tc5: 'Tahlil va optimallashtirish', tc6: 'Kommunikatsiya boshqaruvi', tc7: 'Bozor tahlili',
       tc8: 'Xorijiy bozorlar', tc9: "Ssenariylarni amalga oshirish", tc10: 'Yutuq jamoasi',
       tc11: 'Operatsion jamoa', tc12: "Qo'llab-quvvatlash jamoasi",
-
-      ach_eyebrow: 'YUTUQLARIMIZ',
-      ach_title: '24 yil davomida mijozlar uchun qiymat yaratamiz',
-      ach_card1_title: 'Yillik tadbirlar', ach_card1_desc: "Xitoyda o'rtacha yillik eng yuqori tadbirlar soni",
-      ach_card2_title: "Do'konlar tarmog'i", ach_card2_desc: "Midea do'konlari tarmog'ining eng yuqori qamrovi",
-      ach_card3_title: 'Hamkor brendlar', ach_card3_desc: "Dunyo bo'ylab uzoq muddatli ishonchli brendlar",
-      ach_card4_title: 'Tajriba yillari', ach_card4_desc: '2002-yildan beri uzluksiz qiymat yaratish',
 
       ct_eyebrow: 'RAHMAT', ct_title: "Hamkorlikni boshlashni kutamiz",
       ct_desc: "HEYDAY GROUP brendingizning navbatdagi bobini ajoyib tajribaga aylantirishga tayyor.",

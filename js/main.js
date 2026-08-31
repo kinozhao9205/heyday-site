@@ -77,9 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Scroll reveal
   initScrollReveal();
 
-  // Counter animation
-  initCounters();
-
   // GSAP ScrollTrigger enhancements
   if (!prefersReducedMotion && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -302,88 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(activateInView, 250);
   }
 
-  // Counter animation (iOS/WeChat friendly: low threshold + scroll fallback)
-  function initCounters() {
-    const counters = document.querySelectorAll('.counter');
-    if (!counters.length) return;
-
-    const run = (el) => {
-      const target = parseInt(el.dataset.target, 10);
-      if (!isNaN(target)) animateCounter(el, target);
-    };
-
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            run(entry.target);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0 });
-
-      counters.forEach(c => observer.observe(c));
-
-      // Fallback: if IO never fires (e.g. in-app browsers / fast scroll),
-      // force-run counters once the section scrolls near the bottom.
-      let fallbackDone = false;
-      const fallback = () => {
-        if (fallbackDone) return;
-        const doc = document.documentElement;
-        const nearBottom = window.innerHeight + window.scrollY >= doc.scrollHeight - 400;
-        if (nearBottom) {
-          fallbackDone = true;
-          counters.forEach(c => { run(c); observer.unobserve(c); });
-          window.removeEventListener('scroll', fallback);
-          window.removeEventListener('resize', fallback);
-        }
-      };
-      window.addEventListener('scroll', fallback, { passive: true });
-      window.addEventListener('resize', fallback, { passive: true });
-      // Also check shortly after load in case the page opens at the bottom
-      setTimeout(fallback, 2500);
-    } else {
-      // No IO support: just show final values
-      counters.forEach(c => run(c));
-    }
-  }
-
-  function animateCounter(el, target) {
-    const duration = 2000;
-    const startTime = performance.now();
-    let done = false;
-
-    // Render current eased value from elapsed time (idempotent for a given `now`)
-    const render = (now) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easeProgress = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(easeProgress * target).toLocaleString();
-      return progress;
-    };
-    const finish = () => {
-      done = true;
-      el.textContent = target.toLocaleString();
-      el.classList.add('counter-flash');
-      setTimeout(() => el.classList.remove('counter-flash'), 700);
-    };
-
-    const step = (now) => {
-      if (done) return;
-      if (render(now) < 1) requestAnimationFrame(step);
-      else finish();
-    };
-    requestAnimationFrame(step);
-
-    // Watchdog: iOS WebKit pauses/throttles requestAnimationFrame during long
-    // scrolls and in WeChat's in-app browser. A timer keeps driving the
-    // animation to completion so counters never freeze on "0".
-    const wd = setInterval(() => {
-      if (done) { clearInterval(wd); return; }
-      if (render(performance.now()) >= 1) finish();
-    }, 100);
-  }
-
   // Viewport-driven video playback + dynamic pan for long images/videos.
   // Videos carry preload="none" and no autoplay attribute in the HTML;
   // they only start fetching when scrolled near the viewport and pause when
@@ -398,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // fixed-aspect container, then set a CSS variable-driven pan animation
     // whose distance and speed match the actual overflow.
     function applyPan(el, w, h) {
-      const media = el.closest('.case-media, .more-media, .ach-gif, .adv-image');
+      const media = el.closest('.case-media, .more-media, .adv-image');
       if (!media || !w || !h) return;
       const cr = media.clientWidth / media.clientHeight;
       const r = w / h;
@@ -579,7 +494,7 @@ function initTeamPhotoCenter() {
 
 function initTilt() {
   if (window.matchMedia('(pointer: coarse)').matches) return;
-  const cards = document.querySelectorAll('.case-card, .adv-card, .more-card, .ach-card');
+  const cards = document.querySelectorAll('.case-card, .adv-card, .more-card');
   cards.forEach(card => {
     card.classList.add('tilt-card');
     const shine = document.createElement('div');
