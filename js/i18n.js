@@ -55,6 +55,8 @@
       adv_card4_desc: 'Localized experience marketing across Europe, America, and Southeast Asia for global brand growth.',
       adv_card5_title: 'Video Production & Social Media Distribution',
       adv_card5_desc: 'High-impact content creation and precision distribution across social platforms.',
+      exhibit_title: 'Exhibition Equipment',
+
 
       gl_eyebrow: 'GLOBAL LAYOUT',
       gl_title: 'Delivering integrated marketing solutions worldwide',
@@ -182,6 +184,8 @@
       adv_card4_desc: '覆蓋歐美、東南亞的本地化體驗行銷，助力品牌全球化增長。',
       adv_card5_title: '視頻製作與社群媒體分發',
       adv_card5_desc: '高衝擊力的內容創作與社群平台精準分發。',
+      exhibit_title: '展具內容',
+
 
       gl_eyebrow: '全球佈局',
       gl_title: '在全球範圍內提供整合行銷解決方案',
@@ -309,6 +313,8 @@
       adv_card4_desc: 'Локализованный иммерсивный маркетинг в Европе, Америке и Юго-Восточной Азии для глобального роста бренда.',
       adv_card5_title: 'Видеопроизводство и продвижение в соцсетях',
       adv_card5_desc: 'Создание контента высокой вовлечённости и точное распространение по социальным платформам.',
+      exhibit_title: 'Выставочное оборудование',
+
 
       gl_eyebrow: 'ГЛОБАЛЬНАЯ СЕТЬ',
       gl_title: 'Интегрированные маркетинговые решения по всему миру',
@@ -426,6 +432,8 @@
       adv_card4_desc: "Yevropa, Amerika va Janubi-Sharqiy Osiyoda brendning global o'sishi uchun lokalizatsiyalangan tajriba marketingi.",
       adv_card5_title: "Video ishlab chiqarish va ijtimoiy tarmoqlarda tarqatish",
       adv_card5_desc: "Yuqori ta'sirli kontent yaratish va ijtimoiy platformalarda aniq tarqatish.",
+      exhibit_title: "Ko'rgazma jihozlari",
+
 
       gl_eyebrow: 'GLOBAL TARMOQ',
       gl_title: "Butun dunyoda integratsiyalashgan marketing yechimlari",
