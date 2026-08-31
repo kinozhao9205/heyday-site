@@ -384,13 +384,95 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   }
 
-  // Viewport-driven video playback. Videos carry preload="none" and no
-  // autoplay attribute in the HTML; they only start fetching when scrolled
-  // near the viewport and pause when scrolled far away. Critical on the
-  // Aliyun server whose outbound bandwidth is ~2.2 Mbps: previously 16
-  // concurrent autoplay videos starved image downloads and made the team
-  // panorama never appear in Safari / WeChat (WebKit).
+  // Viewport-driven video playback + dynamic pan for long images/videos.
+  // Videos carry preload="none" and no autoplay attribute in the HTML;
+  // they only start fetching when scrolled near the viewport and pause when
+  // scrolled far away. Critical on the Aliyun server whose outbound bandwidth
+  // is ~2.2 Mbps: previously 16 concurrent autoplay videos starved image
+  // downloads and made the team panorama never appear in Safari / WeChat.
+  // Additionally, every poster and video is analysed: if it is wider or
+  // taller than its fixed-aspect container, a slow pan animation scrolls the
+  // full content into view instead of cropping or leaving blank borders.
   function initViewportVideos() {
+    // Compute the fraction of the image/video that would be cropped by the
+    // fixed-aspect container, then set a CSS variable-driven pan animation
+    // whose distance and speed match the actual overflow.
+    function applyPan(el, w, h) {
+      const media = el.closest('.case-media, .more-media, .ach-gif, .adv-image');
+      if (!media || !w || !h) return;
+      const cr = media.clientWidth / media.clientHeight;
+      const r = w / h;
+      el.classList.remove('pan-x', 'pan-y');
+      el.style.removeProperty('--pan-shift');
+      el.style.removeProperty('--pan-duration');
+
+      if (r > cr * 1.01) {
+        el.classList.add('pan-x');
+        const renderedH = media.clientHeight;          // when height = 100%
+        const renderedW = renderedH * r;
+        const hidden = Math.max(0, renderedW - media.clientWidth) / renderedW;
+        const shift = Math.min(Math.max(hidden, 0.10), 0.55);
+        const dur = 8 + shift * 34;                      // ~8–27 s
+        el.style.setProperty('--pan-shift', `-${(shift * 100).toFixed(1)}%`);
+        el.style.setProperty('--pan-duration', `${dur.toFixed(1)}s`);
+      } else if (r < cr / 1.05) {
+        el.classList.add('pan-y');
+        const renderedW = media.clientWidth;           // when width = 100%
+        const renderedH = renderedW / r;
+        const hidden = Math.max(0, renderedH - media.clientHeight) / renderedH;
+        const shift = Math.min(Math.max(hidden, 0.10), 0.55);
+        const dur = 8 + shift * 34;
+        el.style.setProperty('--pan-shift', `-${(shift * 100).toFixed(1)}%`);
+        el.style.setProperty('--pan-duration', `${dur.toFixed(1)}s`);
+      }
+    }
+
+    function refreshPans() {
+      document.querySelectorAll('.video-poster, video.pan-x, video.pan-y, .adv-image img').forEach((el) => {
+        if (el.tagName === 'IMG' && el.complete && el.naturalWidth) {
+          applyPan(el, el.naturalWidth, el.naturalHeight);
+        }
+      });
+    }
+
+    // Start poster pan as soon as the poster image is available, so even
+    // before the video loads the long image scrolls instead of sitting cropped.
+    document.querySelectorAll('.video-poster').forEach((img) => {
+      if (img.complete && img.naturalWidth) {
+        applyPan(img, img.naturalWidth, img.naturalHeight);
+      } else {
+        img.addEventListener('load', () => applyPan(img, img.naturalWidth, img.naturalHeight), { once: true });
+      }
+    });
+
+    // Advantages card images: same dynamic pan treatment.
+    document.querySelectorAll('.adv-image img').forEach((img) => {
+      if (img.complete && img.naturalWidth) {
+        applyPan(img, img.naturalWidth, img.naturalHeight);
+      } else {
+        img.addEventListener('load', () => applyPan(img, img.naturalWidth, img.naturalHeight), { once: true });
+      }
+    });
+
+    // Re-apply pan based on real video dimensions and fade video over poster.
+    document.querySelectorAll('video').forEach((v) => {
+      const setVideoPan = () => {
+        if (v.videoWidth && v.videoHeight) {
+          applyPan(v, v.videoWidth, v.videoHeight);
+          v.classList.add('is-loaded');
+        }
+      };
+      if (v.readyState >= 1) setVideoPan();
+      v.addEventListener('loadedmetadata', setVideoPan, { once: true });
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(refreshPans, 200);
+    });
+
+    // Viewport-driven play/pause
     const vids = document.querySelectorAll('video');
     if (!vids.length) return;
 
@@ -408,7 +490,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (!('IntersectionObserver' in window)) {
-      // Fallback for legacy browsers: let everything attempt to play.
       vids.forEach((v) => { prep(v); v.preload = 'metadata'; tryPlay(v); });
       return;
     }
@@ -420,16 +501,13 @@ document.addEventListener('DOMContentLoaded', () => {
           if (v.dataset.vpStarted) return;
           v.dataset.vpStarted = '1';
           v.preload = 'metadata';
-          v.load(); // begin fetching only near the viewport
+          v.load();
           tryPlay(v);
           v.addEventListener('loadeddata', () => tryPlay(v), { once: true });
           v.addEventListener('canplay', () => tryPlay(v), { once: true });
-          // Staggered retries — avoids all videos hitting the 2.2 Mbps
-          // pipe at the same instant.
           setTimeout(() => tryPlay(v), 400);
           setTimeout(() => tryPlay(v), 1500);
         } else if (v.dataset.vpStarted) {
-          // Left the viewport: pause to free bandwidth for other content.
           try { v.pause(); } catch (err) { /* ignore */ }
         }
       });

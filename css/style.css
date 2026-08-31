@@ -583,16 +583,23 @@ img { max-width: 100%; display: block; }
   height: 170px;
   overflow: hidden;
   flex-shrink: 0;
+  background: var(--color-card);
 }
 
 .adv-image img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s var(--ease-out);
+  object-fit: contain;
+  transition: opacity 0.5s ease, transform 0.8s var(--ease-out);
 }
 
-.adv-card:hover .adv-image img { transform: scale(1.06); }
+/* Hover zoom only applies to images that are not panning */
+.adv-card:hover .adv-image img:not(.pan-x):not(.pan-y) { transform: scale(1.06); }
+
+.adv-image img.pan-x { animation: videoPanX var(--pan-duration, 14s) linear infinite alternate; }
+.adv-image img.pan-y { animation: videoPanY var(--pan-duration, 14s) linear infinite alternate; }
 
 .adv-body {
   padding: 22px;
@@ -839,16 +846,23 @@ img { max-width: 100%; display: block; }
   background: #000;
 }
 
-.case-media img,
+.case-media .video-poster,
 .case-media video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s var(--ease-out);
+  object-fit: contain;
+  transition: opacity 0.5s ease, transform 0.8s var(--ease-out);
 }
 
-.case-card:hover .case-media img,
-.case-card:hover .case-media video { transform: scale(1.04); }
+/* Video fades in over the poster once it has loaded data */
+.case-media video { opacity: 0; z-index: 1; }
+.case-media video.is-loaded { opacity: 1; }
+
+/* Hover zoom only applies to non-panning videos (pan uses its own animation) */
+.case-card:hover .case-media .video-poster,
+.case-card:hover .case-media video:not(.pan-x):not(.pan-y) { transform: scale(1.04); }
 
 .case-play {
   position: absolute;
@@ -866,6 +880,7 @@ img { max-width: 100%; display: block; }
   opacity: 0;
   transition: all 0.4s var(--ease-out);
   pointer-events: none;
+  z-index: 2;
 }
 
 .case-card:hover .case-play { opacity: 1; transform: translate(-50%, -50%) scale(1); }
@@ -1068,18 +1083,27 @@ img { max-width: 100%; display: block; }
 }
 
 .ach-gif {
+  position: relative;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--color-border);
   aspect-ratio: 3 / 2;
+  background: #000;
 }
 
-.ach-gif img,
+.ach-gif .video-poster,
 .ach-gif video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  transition: opacity 0.5s ease;
 }
+
+/* Video fades in over the poster once it has loaded data */
+.ach-gif video { opacity: 0; z-index: 1; }
+.ach-gif video.is-loaded { opacity: 1; }
 
 /* Contact */
 .contact {
@@ -1450,14 +1474,23 @@ img { max-width: 100%; display: block; }
   background: #000;
 }
 
+.more-media .video-poster,
 .more-media video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s var(--ease-out);
+  object-fit: contain;
+  transition: opacity 0.5s ease, transform 0.8s var(--ease-out);
 }
 
-.more-card:hover .more-media video { transform: scale(1.04); }
+/* Video fades in over the poster once it has loaded data */
+.more-media video { opacity: 0; z-index: 1; }
+.more-media video.is-loaded { opacity: 1; }
+
+/* Hover zoom only applies to non-panning videos (pan uses its own animation) */
+.more-card:hover .more-media .video-poster,
+.more-card:hover .more-media video:not(.pan-x):not(.pan-y) { transform: scale(1.04); }
 
 .more-body {
   padding: 18px;
@@ -1473,6 +1506,55 @@ img { max-width: 100%; display: block; }
 .more-body p {
   color: var(--color-text-2);
   font-size: 12px;
+}
+
+/* ---------- Video pan: long images/videos scroll dynamically ---------- */
+.video-poster,
+.case-media video,
+.more-media video,
+.ach-gif video {
+  --pan-duration: 14s;
+  --pan-shift: -22%;
+}
+
+/* Horizontal pan: content is wider than the container */
+.video-poster.pan-x,
+video.pan-x {
+  width: auto;
+  height: 100%;
+  min-width: 100%;
+  max-width: none;
+  object-fit: contain;
+  animation: videoPanX var(--pan-duration, 14s) linear infinite alternate;
+}
+
+/* Vertical pan: content is taller than the container */
+.video-poster.pan-y,
+video.pan-y {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  max-height: none;
+  object-fit: contain;
+  animation: videoPanY var(--pan-duration, 14s) linear infinite alternate;
+}
+
+@keyframes videoPanX {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(var(--pan-shift, -22%)); }
+}
+
+@keyframes videoPanY {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(var(--pan-shift, -22%)); }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .video-poster.pan-x,
+  .video-poster.pan-y,
+  video.pan-x,
+  video.pan-y { animation-play-state: paused !important; }
 }
 
 /* ---------- Achievements: domestic / overseas scope ---------- */
