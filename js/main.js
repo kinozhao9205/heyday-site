@@ -262,61 +262,107 @@ document.addEventListener('DOMContentLoaded', () => {
     reveals.forEach(el => observer.observe(el));
   }
 
-  // Counter animation
+  // Counter animation (iOS/WeChat friendly: low threshold + scroll fallback)
   function initCounters() {
     const counters = document.querySelectorAll('.counter');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const counter = entry.target;
-          const target = parseInt(counter.dataset.target, 10);
-          animateCounter(counter, target);
-          observer.unobserve(counter);
-        }
-      });
-    }, { threshold: 0.5 });
+    if (!counters.length) return;
 
-    counters.forEach(counter => observer.observe(counter));
+    const run = (el) => {
+      const target = parseInt(el.dataset.target, 10);
+      if (!isNaN(target)) animateCounter(el, target);
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            run(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0 });
+
+      counters.forEach(c => observer.observe(c));
+
+      // Fallback: if IO never fires (e.g. in-app browsers / fast scroll),
+      // force-run counters once the section scrolls near the bottom.
+      let fallbackDone = false;
+      const fallback = () => {
+        if (fallbackDone) return;
+        const doc = document.documentElement;
+        const nearBottom = window.innerHeight + window.scrollY >= doc.scrollHeight - 400;
+        if (nearBottom) {
+          fallbackDone = true;
+          counters.forEach(c => { run(c); observer.unobserve(c); });
+          window.removeEventListener('scroll', fallback);
+          window.removeEventListener('resize', fallback);
+        }
+      };
+      window.addEventListener('scroll', fallback, { passive: true });
+      window.addEventListener('resize', fallback, { passive: true });
+      // Also check shortly after load in case the page opens at the bottom
+      setTimeout(fallback, 2500);
+    } else {
+      // No IO support: just show final values
+      counters.forEach(c => run(c));
+    }
   }
 
   function animateCounter(el, target) {
     const duration = 2000;
-    const start = 0;
     const startTime = performance.now();
+    let done = false;
 
-    function update(currentTime) {
-      const elapsed = currentTime - startTime;
+    // Render current eased value from elapsed time (idempotent for a given `now`)
+    const render = (now) => {
+      const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const easeProgress = 1 - Math.pow(1 - progress, 3);
-      const current = Math.floor(easeProgress * (target - start) + start);
-      el.textContent = current.toLocaleString();
+      el.textContent = Math.floor(easeProgress * target).toLocaleString();
+      return progress;
+    };
+    const finish = () => {
+      done = true;
+      el.textContent = target.toLocaleString();
+    };
 
-      if (progress < 1) {
-        requestAnimationFrame(update);
+    const step = (now) => {
+      if (done) return;
+      if (render(now) < 1) requestAnimationFrame(step);
+      else finish();
+    };
+    requestAnimationFrame(step);
+
+    // Watchdog: iOS WebKit pauses/throttles requestAnimationFrame during long
+    // scrolls and in WeChat's in-app browser. A timer keeps driving the
+    // animation to completion so counters never freeze on "0".
+    const wd = setInterval(() => {
+      if (done) { clearInterval(wd); return; }
+      if (render(performance.now()) >= 1) finish();
+    }, 100);
+  }
+
+  // Video autoplay helper — native src in HTML now; here we only retry
+  // playback until it succeeds (handles iOS Safari / WeChat quirks where
+  // autoplay can fail while data is still buffering).
+  const pageVideos = document.querySelectorAll('video');
+  pageVideos.forEach((v, i) => {
+    // Ensure inline playback props are set (belt & braces)
+    v.muted = true;
+    v.playsInline = true;
+    v.setAttribute('webkit-playsinline', '');
+
+    const tryPlay = () => {
+      if (v.readyState >= 2) {
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
       }
-    }
-
-    requestAnimationFrame(update);
-  }
-
-  // Lazy-load videos with IntersectionObserver (bandwidth-friendly)
-  const lazyVideos = document.querySelectorAll('video[data-src]');
-  if ('IntersectionObserver' in window && lazyVideos.length) {
-    const videoIO = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const v = entry.target;
-        if (entry.isIntersecting) {
-          if (!v.src) {
-            v.src = v.dataset.src;
-            v.load();
-            v.play().catch(() => {});
-          }
-          videoIO.unobserve(v);
-        }
-      });
-    }, { rootMargin: '200px 0px' });
-    lazyVideos.forEach((v) => videoIO.observe(v));
-  } else {
-    lazyVideos.forEach((v) => { v.src = v.dataset.src; });
-  }
+    };
+    v.addEventListener('loadeddata', tryPlay, { once: true });
+    v.addEventListener('canplay', tryPlay, { once: true });
+    // Staggered retry (300ms + index*200ms) — also avoids all videos
+    // competing for bandwidth at the same instant on slow servers.
+    setTimeout(tryPlay, 300 + i * 200);
+    setTimeout(tryPlay, 2000 + i * 300);
+  });
 });

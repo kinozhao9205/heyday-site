@@ -23,7 +23,9 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
-  scroll-behavior: smooth;
+  /* Note: scroll-behavior:smooth removed — on iOS WebKit a long programmatic
+     smooth scroll throttles requestAnimationFrame and freezes counter/video
+     animations. Anchor jumps are smoothed via JS scrollIntoView instead. */
   font-size: 16px;
 }
 
