@@ -833,14 +833,16 @@ img { max-width: 100%; display: block; }
   background: #000;
 }
 
-.case-media img {
+.case-media img,
+.case-media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.8s var(--ease-out);
 }
 
-.case-card:hover .case-media img { transform: scale(1.04); }
+.case-card:hover .case-media img,
+.case-card:hover .case-media video { transform: scale(1.04); }
 
 .case-play {
   position: absolute;
@@ -1061,7 +1063,8 @@ img { max-width: 100%; display: block; }
   aspect-ratio: 3 / 2;
 }
 
-.ach-gif img {
+.ach-gif img,
+.ach-gif video {
   width: 100%;
   height: 100%;
   object-fit: cover;
