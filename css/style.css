@@ -1338,7 +1338,7 @@ img { max-width: 100%; display: block; }
   100% { transform: translateX(-50%); }
 }
 
-/* ---------- Exhibition Equipment: horizontal image ticker ---------- */
+/* ---------- Exhibition Equipment: static image grid ---------- */
 .exhibit-showcase {
   margin-top: 64px;
 }
@@ -1362,29 +1362,13 @@ img { max-width: 100%; display: block; }
   border-radius: 2px;
 }
 
-.exhibit-ticker {
-  overflow: hidden;
-  border-radius: 18px;
-  border: 1px solid var(--color-border);
-  background: rgba(0,0,0,0.22);
-  padding: 20px 0;
-}
-
-.exhibit-track {
-  display: flex;
+.exhibit-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 18px;
-  width: max-content;
-  animation: exhibitScroll 55s linear infinite;
 }
 
-.exhibit-track:hover,
-.exhibit-track:focus-within {
-  animation-play-state: paused;
-}
-
-.exhibit-item {
-  flex: 0 0 auto;
-  width: 300px;
+.exhibit-card {
   aspect-ratio: 16 / 9;
   border-radius: 12px;
   overflow: hidden;
@@ -1392,20 +1376,15 @@ img { max-width: 100%; display: block; }
   background: var(--color-card);
 }
 
-.exhibit-item img {
+.exhibit-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s var(--ease-out), opacity 0.4s ease;
 }
 
-.exhibit-item:hover img {
+.exhibit-card:hover img {
   transform: scale(1.05);
-}
-
-@keyframes exhibitScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
 }
 
 /* ---------- Cases: era timeline tag ---------- */
@@ -1756,7 +1735,7 @@ video.pan-y {
 /* ---------- Mobile tweaks for new sections ---------- */
 @media (max-width: 1024px) {
   .team-groups { grid-template-columns: repeat(2, 1fr); }
-  .exhibit-item { width: 260px; }
+  .exhibit-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
   .mc-card { width: 440px; height: 190px; }
   .more-body { padding: 16px; }
 }
@@ -1768,9 +1747,8 @@ video.pan-y {
   .ach-scope { flex-direction: column; align-items: center; gap: 12px; }
   .exhibit-showcase { margin-top: 48px; }
   .exhibit-title { font-size: 18px; margin-bottom: 22px; }
-  .exhibit-ticker { padding: 14px 0; border-radius: 14px; }
-  .exhibit-track { gap: 12px; }
-  .exhibit-item { width: 210px; border-radius: 10px; }
+  .exhibit-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .exhibit-card { border-radius: 10px; }
   .mc-card { width: 340px; height: 150px; border-radius: 12px; }
   .more-body { padding: 12px; }
   .more-body h4 { font-size: 14px; }
