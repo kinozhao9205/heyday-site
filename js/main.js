@@ -384,29 +384,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   }
 
-  // Video autoplay helper — native src in HTML now; here we only retry
-  // playback until it succeeds (handles iOS Safari / WeChat quirks where
-  // autoplay can fail while data is still buffering).
-  const pageVideos = document.querySelectorAll('video');
-  pageVideos.forEach((v, i) => {
-    // Ensure inline playback props are set (belt & braces)
-    v.muted = true;
-    v.playsInline = true;
-    v.setAttribute('webkit-playsinline', '');
+  // Viewport-driven video playback. Videos carry preload="none" and no
+  // autoplay attribute in the HTML; they only start fetching when scrolled
+  // near the viewport and pause when scrolled far away. Critical on the
+  // Aliyun server whose outbound bandwidth is ~2.2 Mbps: previously 16
+  // concurrent autoplay videos starved image downloads and made the team
+  // panorama never appear in Safari / WeChat (WebKit).
+  function initViewportVideos() {
+    const vids = document.querySelectorAll('video');
+    if (!vids.length) return;
 
-    const tryPlay = () => {
+    const prep = (v) => {
+      v.muted = true;
+      v.playsInline = true;
+      v.setAttribute('webkit-playsinline', '');
+    };
+
+    const tryPlay = (v) => {
       if (v.readyState >= 2) {
         const p = v.play();
         if (p && p.catch) p.catch(() => {});
       }
     };
-    v.addEventListener('loadeddata', tryPlay, { once: true });
-    v.addEventListener('canplay', tryPlay, { once: true });
-    // Staggered retry (300ms + index*200ms) — also avoids all videos
-    // competing for bandwidth at the same instant on slow servers.
-    setTimeout(tryPlay, 300 + i * 200);
-    setTimeout(tryPlay, 2000 + i * 300);
-  });
+
+    if (!('IntersectionObserver' in window)) {
+      // Fallback for legacy browsers: let everything attempt to play.
+      vids.forEach((v) => { prep(v); v.preload = 'metadata'; tryPlay(v); });
+      return;
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        const v = e.target;
+        if (e.isIntersecting) {
+          if (v.dataset.vpStarted) return;
+          v.dataset.vpStarted = '1';
+          v.preload = 'metadata';
+          v.load(); // begin fetching only near the viewport
+          tryPlay(v);
+          v.addEventListener('loadeddata', () => tryPlay(v), { once: true });
+          v.addEventListener('canplay', () => tryPlay(v), { once: true });
+          // Staggered retries — avoids all videos hitting the 2.2 Mbps
+          // pipe at the same instant.
+          setTimeout(() => tryPlay(v), 400);
+          setTimeout(() => tryPlay(v), 1500);
+        } else if (v.dataset.vpStarted) {
+          // Left the viewport: pause to free bandwidth for other content.
+          try { v.pause(); } catch (err) { /* ignore */ }
+        }
+      });
+    }, { rootMargin: '300px 0px 300px 0px', threshold: 0.05 });
+
+    vids.forEach((v) => { prep(v); io.observe(v); });
+  }
+  initViewportVideos();
 
   // Pause animated tickers when tab is hidden (saves battery / bandwidth)
   const logoTrack = document.querySelector('.pt-track-logos');
