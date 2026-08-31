@@ -906,9 +906,9 @@ img { max-width: 100%; display: block; }
   overflow-y: hidden;
   border-radius: 20px;
   border: 1px solid var(--color-border);
-  /* 背景渐变匹配全景合影左右边缘色（左深红 #931519 → 右近黑 #090705），
+  /* 背景渐变匹配新全景合影左右边缘色（左 #941519 → 右 #931519），
      滚动到两端时图片与背景同色系，拼接过渡自然 */
-  background: linear-gradient(90deg, #931519 0%, #090705 100%);
+  background: linear-gradient(90deg, #941519 0%, #931519 100%);
   box-shadow: 0 30px 80px rgba(0,0,0,0.55);
   scrollbar-width: thin;
   scrollbar-color: var(--color-red) var(--color-card);
