@@ -418,7 +418,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 3D tilt hover on desktop cards (disabled on touch devices)
   initTilt();
+
+  // Team group photo: default scroll position = center of the panorama,
+  // so the most important part of the group shot is visible on load.
+  initTeamPhotoCenter();
 });
+
+function initTeamPhotoCenter() {
+  const frame = document.querySelector('.team-photo-frame');
+  if (!frame) return;
+  const img = frame.querySelector('img');
+  let userScrolled = false;
+
+  frame.addEventListener('scroll', () => { userScrolled = true; }, { passive: true });
+
+  const center = () => {
+    const max = frame.scrollWidth - frame.clientWidth;
+    if (max > 0) {
+      frame.scrollLeft = max / 2;
+      return true;
+    }
+    return false;
+  };
+
+  // Wait until the wide panorama is loaded (scrollWidth depends on it),
+  // then center once. Guard with a deadline so a failed image never loops.
+  const deadline = Date.now() + 8000;
+  const tryCenter = () => {
+    if (center()) return;
+    if (Date.now() > deadline) return;
+    requestAnimationFrame(tryCenter);
+  };
+
+  if (img && img.complete && img.naturalWidth > 0) {
+    tryCenter();
+  } else if (img) {
+    img.addEventListener('load', tryCenter, { once: true });
+    requestAnimationFrame(tryCenter);
+  } else {
+    tryCenter();
+  }
+
+  // Keep centered across orientation / resize changes unless the user
+  // has manually scrolled the panorama.
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { if (!userScrolled) center(); }, 200);
+  });
+}
 
 function initTilt() {
   if (window.matchMedia('(pointer: coarse)').matches) return;
