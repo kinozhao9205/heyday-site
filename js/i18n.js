@@ -128,6 +128,7 @@
       ft_brand: 'Integrated marketing with strategic and resource attributes.',
       ft_nav_title: 'Navigate',
       ft_hq_title: 'Headquarters',
+      ft_contact_title: 'Contact',
       ft_hq1: 'Beijing · Shanghai · Shenyang',
       ft_hq2: 'Hong Kong · Madrid',
       ft_copyright: '© 2026 HEYDAY GROUP. All rights reserved.'
@@ -258,6 +259,7 @@
       ft_brand: '兼具戰略與資源屬性的整合行銷。',
       ft_nav_title: '快速導航',
       ft_hq_title: '總部',
+      ft_contact_title: '聯繫方式',
       ft_hq1: '北京 · 上海 · 瀋陽',
       ft_hq2: '中國香港 · 馬德里',
       ft_copyright: '© 2026 HEYDAY GROUP 版權所有。'
@@ -379,6 +381,7 @@
       ft_brand: 'Интегрированный маркетинг со стратегическим и ресурсным потенциалом.',
       ft_nav_title: 'Навигация',
       ft_hq_title: 'Штаб-квартиры',
+      ft_contact_title: 'Контакты',
       ft_hq1: 'Пекин · Шанхай · Шэньян',
       ft_hq2: 'Гонконг · Мадрид',
       ft_copyright: '© 2026 HEYDAY GROUP. Все права защищены.'
@@ -500,6 +503,7 @@
       ft_brand: "Strategik va resurs salohiyatiga ega integratsiyalashgan marketing.",
       ft_nav_title: 'Navigatsiya',
       ft_hq_title: 'Bosh ofislar',
+      ft_contact_title: 'Aloqa',
       ft_hq1: 'Pekin · Shanxay · Shenyan',
       ft_hq2: 'Gonkong · Madrid',
       ft_copyright: '© 2026 HEYDAY GROUP. Barcha huquqlar himoyalangan.'
