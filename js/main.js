@@ -247,19 +247,59 @@ document.addEventListener('DOMContentLoaded', () => {
   // Scroll reveal with IntersectionObserver
   function initScrollReveal() {
     const reveals = document.querySelectorAll('.reveal');
+
+    // Auto-stagger children inside grids so cards animate in sequence
+    document.querySelectorAll('.cases-grid, .adv-grid, .more-grid, .ach-grid, .team-groups, .partners-cats').forEach(grid => {
+      Array.from(grid.children).forEach((child, idx) => {
+        if (child.classList.contains('reveal') && !child.dataset.delay) {
+          child.dataset.delay = (idx % 6) * 0.08;
+        }
+      });
+    });
+
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const delay = entry.target.dataset.delay ? parseFloat(entry.target.dataset.delay) : index * 0.05;
-          setTimeout(() => {
-            entry.target.classList.add('active');
-          }, delay * 1000);
+          activateReveal(entry.target);
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
+    // Fallback: fast scroll / anchor jump / in-app browsers can skip the IO
+    // callback entirely, so also activate anything currently inside the viewport.
+    const pending = Array.from(reveals);
+    const activateReveal = (el) => {
+      if (el.classList.contains('active')) return;
+      const delay = el.dataset.delay ? parseFloat(el.dataset.delay) : 0;
+      setTimeout(() => {
+        if (!el.classList.contains('active')) el.classList.add('active');
+      }, delay * 1000);
+    };
+    const activateInView = () => {
+      for (let i = pending.length - 1; i >= 0; i--) {
+        const el = pending[i];
+        if (el.classList.contains('active')) { pending.splice(i, 1); continue; }
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 40 && rect.bottom > 0) {
+          activateReveal(el);
+          pending.splice(i, 1);
+        }
+      }
+    };
+    let rvTicking = false;
+    window.addEventListener('scroll', () => {
+      if (rvTicking) return;
+      rvTicking = true;
+      requestAnimationFrame(() => {
+        activateInView();
+        rvTicking = false;
+      });
+    }, { passive: true });
+
     reveals.forEach(el => observer.observe(el));
+    // initial pass (above-the-fold + when landed via anchor)
+    setTimeout(activateInView, 250);
   }
 
   // Counter animation (iOS/WeChat friendly: low threshold + scroll fallback)
@@ -324,6 +364,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const finish = () => {
       done = true;
       el.textContent = target.toLocaleString();
+      el.classList.add('counter-flash');
+      setTimeout(() => el.classList.remove('counter-flash'), 700);
     };
 
     const step = (now) => {
@@ -365,4 +407,42 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(tryPlay, 300 + i * 200);
     setTimeout(tryPlay, 2000 + i * 300);
   });
+
+  // Pause animated tickers when tab is hidden (saves battery / bandwidth)
+  const logoTrack = document.querySelector('.pt-track-logos');
+  if (logoTrack && !prefersReducedMotion) {
+    document.addEventListener('visibilitychange', () => {
+      logoTrack.style.animationPlayState = document.hidden ? 'paused' : 'running';
+    });
+  }
+
+  // 3D tilt hover on desktop cards (disabled on touch devices)
+  initTilt();
 });
+
+function initTilt() {
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+  const cards = document.querySelectorAll('.case-card, .adv-card, .more-card, .ach-card');
+  cards.forEach(card => {
+    card.classList.add('tilt-card');
+    const shine = document.createElement('div');
+    shine.className = 'tilt-shine';
+    if (getComputedStyle(card).position === 'static') card.style.position = 'relative';
+    card.appendChild(shine);
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const rx = ((y - cy) / cy) * -8;
+      const ry = ((x - cx) / cx) * 8;
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px) translateY(-6px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}

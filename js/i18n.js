@@ -97,6 +97,14 @@
       case5_desc: 'Annual dealer conferences and intelligent electric technology launches — executed at scale with speed and precision.',
       case6_title: 'More Marketing Cases', case6_sub: 'Yadea · GAC Honda · Wuliangye · FAW Hongqi · JD.com · Tmall',
       case6_desc: 'Cycling festivals, global embassy events, national tour exhibitions, and cross-industry roadshows.',
+      case1_era: 'Tang · Counties · Global',
+      case2_era: 'Stores · Premium · Group',
+      case3_era: 'Mini-car · MINI EV · Channels',
+      case4_era: 'C-end · Commercial',
+      case5_era: 'Dealer · Tech Launch',
+
+      more_eyebrow: 'HEYDAY', more_title: 'More Marketing Cases',
+      more_desc: 'Cycling festivals, embassy events, national tours and cross-industry activations.',
 
       team_eyebrow: 'ABOUT OUR TEAM', team_title: 'Infinite Progress',
       team_desc: 'Leveraging brand exposure as the marketing catalyst and sales conversion as the ultimate objective, we deliver deeply impressive experiences to create greater business value.',
@@ -107,8 +115,10 @@
       tc5: 'Summary & optimization', tc6: 'Communication management', tc7: 'Market intelligence',
       tc8: 'Overseas markets', tc9: 'Scene implementation', tc10: 'Breakthrough team',
       tc11: 'Operation team', tc12: 'Support team',
+      tg_support: 'Support Team', tg_breakthrough: 'Breakthrough Team', tg_operation: 'Operation Team',
 
       ach_eyebrow: 'OUR ACHIEVEMENTS',
+      ach_domestic: 'Domestic', ach_overseas: 'Overseas',
       ach_title: 'Creating value for clients continuously for 24 years',
       ach_card1_title: 'Events Per Year', ach_card1_desc: 'Domestic event execution peak annual average',
       ach_card2_title: 'Channel Stores', ach_card2_desc: 'Midea peak nationwide store network coverage',
@@ -221,6 +231,14 @@
       case5_desc: '年度經銷商大會與智能電動技術發佈會——規模化、高速度、高精度執行。',
       case6_title: '更多營銷案例', case6_sub: '雅迪 · 廣汽本田 · 五糧液 · 一汽紅旗 · 京東 · 天貓',
       case6_desc: '騎行節、全球大使館活動、全國巡迴展覽與跨界路演。',
+      case1_era: '唐戰番邦 · 縣域聯動 · 全球化',
+      case2_era: '萬店升級 · 高端形象 · 集團發展',
+      case3_era: '微車之王 · MINI EV · 渠道下沉',
+      case4_era: 'C端轉型 · 商用車',
+      case5_era: '經銷商大會 · 技術發佈',
+
+      more_eyebrow: 'HEYDAY', more_title: '更多營銷案例',
+      more_desc: '騎行節、大使館活動、全國巡迴展覽與跨界路演。',
 
       team_eyebrow: '關於我們的團隊', team_title: '無限進步',
       team_desc: '以品牌曝光為行銷催化劑、銷售轉化為最終目標，交付令人印象深刻的體驗，創造更大的商業價值。',
@@ -231,8 +249,10 @@
       tc5: '總結優化', tc6: '傳播管理', tc7: '市場情報',
       tc8: '海外市場', tc9: '場景落地', tc10: '突破團隊',
       tc11: '運營團隊', tc12: '保障團隊',
+      tg_support: '保障團隊', tg_breakthrough: '突破團隊', tg_operation: '運營團隊',
 
       ach_eyebrow: '我們的成就',
+      ach_domestic: '國內', ach_overseas: '海外',
       ach_title: '24年持續為客戶創造價值',
       ach_card1_title: '年均活動場次', ach_card1_desc: '國內活動執行峰值年均',
       ach_card2_title: '渠道門店', ach_card2_desc: '美的全國門店網絡峰值覆蓋',
