@@ -14,7 +14,7 @@
       nav_about: 'About', nav_history: 'History', nav_services: 'Services',
       nav_cases: 'Cases', nav_team: 'Team', nav_contact: 'Contact',
 
-      hero_eyebrow: 'BRAND MANUAL',
+      hero_eyebrow: 'BRAND BOOK',
       hero_subtitle: 'Integrated Marketing Agency with Both Strategic Expertise and Robust Resources',
       hero_cta1: 'Explore HEYDAY', hero_cta2: 'View Cases', hero_scroll: 'Scroll',
 
@@ -60,7 +60,6 @@
       adv_card4_desc: 'Localized experience marketing across Europe, the Americas, Central Asia, and Southeast Asia for global brand growth.',
       adv_card5_title: 'Video Production & Social Media Distribution',
       adv_card5_desc: 'High-impact content creation and precision distribution across social platforms.',
-      exhibit_title: 'Exhibition Equipment',
 
       gl_eyebrow: 'GLOBAL FOOTPRINT',
       gl_title: 'Delivering integrated marketing and localized on-the-ground services worldwide',
@@ -85,7 +84,7 @@
       pt_title: 'Thanks to the long-standing trust of over 100 global partners',
       brand_midea: 'Midea', brand_wuling: 'Wuling', brand_faw_toyota: 'FAW Toyota',
       brand_gac_honda: 'GAC Honda', brand_hongqi: 'FAW Hongqi', brand_yadea: 'Yadea',
-      brand_jd: 'JD.com', brand_tmall: 'Tmall', brand_wuliangye: 'Wuliangye',
+      brand_jd: 'JD.com', brand_wuliangye: 'Wuliangye',
 
       pcat_internet: 'Internet Industry Partner',
       pcat_appliance: 'Leading Home Appliances Partner',
@@ -199,7 +198,6 @@
       adv_card4_desc: '覆蓋歐洲、美洲、中亞與東南亞的本地化體驗營銷，助力品牌全球化增長。',
       adv_card5_title: '視頻製作及社媒分發',
       adv_card5_desc: '高衝擊力內容創作與社群平台精準分發。',
-      exhibit_title: '展具內容',
 
       gl_eyebrow: '全球佈局',
       gl_title: '在全球範圍內提供整合營銷落地服務',
@@ -224,7 +222,7 @@
       pt_title: '感謝全球上百余品牌的長久信任',
       brand_midea: '美的', brand_wuling: '五菱', brand_faw_toyota: '一汽豐田',
       brand_gac_honda: '廣汽本田', brand_hongqi: '一汽紅旗', brand_yadea: '雅迪',
-      brand_jd: '京東', brand_tmall: '天貓', brand_wuliangye: '五糧液',
+      brand_jd: '京東', brand_wuliangye: '五糧液',
 
       pcat_internet: '互聯網品牌',
       pcat_appliance: '家電第一品牌',
@@ -338,7 +336,6 @@
       adv_card4_desc: 'Локализованный иммерсивный маркетинг в Европе, Америке, Центральной Азии и ЮВА для глобального роста бренда.',
       adv_card5_title: 'Видеопроизводство и продвижение в соцсетях',
       adv_card5_desc: 'Создание мощного контента и точное распределение по социальным платформам.',
-      exhibit_title: 'Выставочное оборудование',
 
       gl_eyebrow: 'ГЛОБАЛЬНАЯ СЕТЬ',
       gl_title: 'Интегрированный маркетинг и локальные услуги по всему миру',
@@ -363,7 +360,7 @@
       pt_title: 'Благодарим более 100 глобальных партнёров за многолетнее доверие',
       brand_midea: 'Midea', brand_wuling: 'Wuling', brand_faw_toyota: 'FAW Toyota',
       brand_gac_honda: 'GAC Honda', brand_hongqi: 'FAW Hongqi', brand_yadea: 'Yadea',
-      brand_jd: 'JD.com', brand_tmall: 'Tmall', brand_wuliangye: 'Wuliangye',
+      brand_jd: 'JD.com', brand_wuliangye: 'Wuliangye',
 
       pcat_internet: 'Интернет-индустрия',
       pcat_appliance: 'Ведущий бренд бытовой техники',
@@ -477,7 +474,6 @@
       adv_card4_desc: "Yevropa, Amerika, Markaziy Osiyo va Janubi-Sharqiy Osiyoda brendning global o'sishi uchun lokalizatsiyalangan tajriba marketingi.",
       adv_card5_title: "Video ishlab chiqarish va ijtimoiy tarmoqlarda tarqatish",
       adv_card5_desc: "Yuqori ta'sirli kontent yaratish va ijtimoiy platformalarda aniq tarqatish.",
-      exhibit_title: "Ko'rgazma jihozlari",
 
       gl_eyebrow: 'GLOBAL TARMOQ',
       gl_title: "Butun dunyoda integratsiyalashgan marketing va mahalliy xizmatlar",
@@ -502,7 +498,7 @@
       pt_title: "Dunyodagi 100 dan ortiq global hamkorning uzoq yillik ishonchiga minnatdormiz",
       brand_midea: 'Midea', brand_wuling: 'Wuling', brand_faw_toyota: 'FAW Toyota',
       brand_gac_honda: 'GAC Honda', brand_hongqi: 'FAW Hongqi', brand_yadea: 'Yadea',
-      brand_jd: 'JD.com', brand_tmall: 'Tmall', brand_wuliangye: 'Wuliangye',
+      brand_jd: 'JD.com', brand_wuliangye: 'Wuliangye',
 
       pcat_internet: "Internet sanoati",
       pcat_appliance: "Yetakchi maishiy texnika brendi",
