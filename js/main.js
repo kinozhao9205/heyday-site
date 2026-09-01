@@ -443,10 +443,42 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3D tilt hover on desktop cards (disabled on touch devices)
   initTilt();
 
+  // Case cards: expand/collapse detail bullets
+  initCaseExpand();
+
   // Team group photo: default scroll position = center of the panorama,
   // so the most important part of the group shot is visible on load.
   initTeamPhotoCenter();
 });
+
+function initCaseExpand() {
+  const casesSection = document.querySelector('.cases');
+  if (!casesSection) return;
+
+  const dictText = (key, fallback) => {
+    try {
+      const t = window.HEYDAY_I18N && window.HEYDAY_I18N.text(key);
+      return t || fallback;
+    } catch (e) {
+      return fallback;
+    }
+  };
+
+  casesSection.addEventListener('click', (e) => {
+    const btn = e.target.closest('.case-toggle');
+    if (!btn) return;
+    const card = btn.closest('.case-card');
+    if (!card) return;
+    const label = btn.querySelector('span');
+    const open = card.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (label) {
+      label.textContent = open
+        ? dictText('cs_less', 'Close')
+        : dictText('cs_more', 'View details');
+    }
+  });
+}
 
 function initTeamPhotoCenter() {
   const frame = document.querySelector('.team-photo-frame');

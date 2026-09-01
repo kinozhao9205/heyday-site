@@ -416,30 +416,80 @@ img { max-width: 100%; display: block; }
   position: relative;
 }
 
-.about-image-wrap {
+/* About — capability wheel (mirrors PPT slide 4) */
+.wheel-wrap {
   position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  display: grid;
+  place-items: center;
 }
 
-.about-image-wrap img {
+.wheel-svg {
   width: 100%;
+  max-width: 540px;
   height: auto;
-  transition: transform 0.8s ease;
+  filter: drop-shadow(0 30px 70px rgba(0,0,0,0.55));
 }
 
-.about-image-wrap:hover img { transform: scale(1.03); }
+.wheel-svg .wheel-orbit {
+  transform-origin: 280px 280px;
+  transform-box: view-box;
+  animation: orbitSpin 50s linear infinite;
+}
+@keyframes orbitSpin {
+  to { transform: rotate(360deg); }
+}
 
-.about-image-accent {
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
-  width: 120px;
-  height: 120px;
-  border: 2px solid var(--color-red);
-  border-radius: 16px;
-  z-index: -1;
+.wheel-svg .wheel-spokes line {
+  stroke-dasharray: 4 7;
+  animation: spokeFlow 3.2s linear infinite;
+}
+@keyframes spokeFlow {
+  to { stroke-dashoffset: -44; }
+}
+
+.wheel-svg .wheel-node circle {
+  transition: stroke 0.35s var(--ease-out), filter 0.35s var(--ease-out);
+}
+.wheel-svg .wheel-node:hover circle {
+  stroke: rgba(230, 0, 18, 0.95);
+  filter: drop-shadow(0 0 14px rgba(230, 0, 18, 0.45));
+}
+
+.wheel-svg .wn-num {
+  fill: var(--color-red);
+  font-size: 12px;
+  font-weight: 800;
+  font-family: var(--font-body, Inter), sans-serif;
+  letter-spacing: 1.5px;
+}
+.wheel-svg .wn-kw {
+  fill: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font-body, Inter), 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+.wheel-svg .wh-logo {
+  fill: #fff;
+  font-size: 25px;
+  font-weight: 800;
+  font-family: var(--font-display, Inter), sans-serif;
+  letter-spacing: 2px;
+}
+.wheel-svg .wh-sub {
+  fill: var(--color-red);
+  font-size: 8.5px;
+  font-weight: 700;
+  font-family: var(--font-body, Inter), sans-serif;
+  letter-spacing: 2.6px;
+}
+.wheel-svg .hub-breath {
+  transform-origin: 280px 280px;
+  transform-box: view-box;
+  animation: hubBreath 3.6s ease-in-out infinite;
+}
+@keyframes hubBreath {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.06); opacity: 0.35; }
 }
 
 .about-content { display: flex; flex-direction: column; gap: 18px; }
@@ -458,18 +508,30 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 
-.ac-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(230, 0, 18, 0.1);
-  color: var(--color-red);
-  display: grid;
-  place-items: center;
-  margin-bottom: 16px;
+.ac-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
-.ac-icon svg { width: 24px; height: 24px; }
+.ac-num {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--color-red);
+  letter-spacing: 2px;
+}
+
+.ac-kw {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.16);
+  padding: 3px 12px;
+  border-radius: 999px;
+}
 
 .about-card h3 {
   font-family: var(--font-display);
@@ -645,64 +707,78 @@ img { max-width: 100%; display: block; }
   padding-top: 20px;
 }
 
+/* Global map — Beijing-centric radiation (dot-matrix world map) */
 .globe-svg {
   width: 100%;
-  max-width: 520px;
+  max-width: 620px;
   height: auto;
   filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5));
 }
 
-/* Pulse rings on city nodes */
+/* City node pulse */
 .globe-svg .pulse {
   transform-origin: center;
   transform-box: fill-box;
-  animation: cityPulse 2.4s ease-out infinite;
+  animation: cityPulse 2.8s ease-out infinite;
 }
-.globe-svg .city:nth-child(2) .pulse { animation-delay: 0.3s; }
-.globe-svg .city:nth-child(3) .pulse { animation-delay: 0.6s; }
-.globe-svg .city:nth-child(4) .pulse { animation-delay: 0.9s; }
-.globe-svg .city:nth-child(5) .pulse { animation-delay: 1.2s; }
+.globe-svg .city:nth-child(2) .pulse { animation-delay: 0.35s; }
+.globe-svg .city:nth-child(3) .pulse { animation-delay: 0.7s; }
+.globe-svg .city:nth-child(4) .pulse { animation-delay: 1.05s; }
+.globe-svg .city:nth-child(5) .pulse { animation-delay: 1.4s; }
+.globe-svg .city:nth-child(6) .pulse { animation-delay: 1.75s; }
+.globe-svg .city:nth-child(7) .pulse { animation-delay: 2.1s; }
 
 @keyframes cityPulse {
-  0%   { transform: scale(0.6); opacity: 0.9; }
-  100% { transform: scale(2.6); opacity: 0; }
+  0%   { transform: scale(0.5); opacity: 0.85; }
+  100% { transform: scale(2.8); opacity: 0; }
 }
 
-.globe-svg .ring {
+/* Radiation arcs — flowing dash */
+.globe-svg .map-arc {
+  stroke-dasharray: 5 90;
+  stroke-dashoffset: 95;
+  animation: arcFlow 2.6s linear infinite;
+}
+@keyframes arcFlow {
+  0%   { stroke-dashoffset: 95; opacity: 0; }
+  12%  { opacity: 1; }
+  86%  { opacity: 1; }
+  100% { stroke-dashoffset: -95; opacity: 0; }
+}
+
+/* Traveling packets (animateMotion + fade sync) */
+.globe-svg .map-packet {
+  opacity: 0;
+  animation: packetFade 2.6s linear infinite;
+}
+@keyframes packetFade {
+  0%   { opacity: 0; }
+  15%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Beijing hub — expanding sonar rings */
+.globe-svg .hub-ring {
   transform-origin: center;
   transform-box: fill-box;
-  animation: cityRing 3.6s linear infinite;
+  animation: hubRing 3.6s ease-out infinite;
 }
-@keyframes cityRing {
-  0%   { transform: scale(0.6); opacity: 0; }
-  20%  { opacity: 1; }
-  100% { transform: scale(2.2); opacity: 0; }
-}
-
-/* Animated connection arcs */
-.globe-svg .globe-link {
-  stroke-dasharray: 6 6;
-  animation: dash 4s linear infinite;
-}
-.globe-svg .globe-link:nth-child(2) { animation-delay: 0.6s; }
-.globe-svg .globe-link:nth-child(3) { animation-delay: 1.2s; }
-.globe-svg .globe-link:nth-child(4) { animation-delay: 1.8s; }
-.globe-svg .globe-link:nth-child(5) { animation-delay: 2.4s; }
-
-@keyframes dash {
-  to { stroke-dashoffset: -120; }
+.globe-svg .hub-ring.r2 { animation-delay: 1.2s; }
+.globe-svg .hub-ring.r3 { animation-delay: 2.4s; }
+@keyframes hubRing {
+  0%   { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(4.6); opacity: 0; }
 }
 
-/* Sweep radar arc */
-.globe-svg .globe-sweep {
-  transform-origin: 300px 200px;
-  transform-box: view-box;
-  animation: sweep 6s linear infinite;
-  opacity: 0.55;
+.globe-svg .hub-glow {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: hubGlowPulse 4.8s ease-in-out infinite;
 }
-@keyframes sweep {
-  0%   { transform: rotate(-45deg); }
-  100% { transform: rotate(315deg); }
+@keyframes hubGlowPulse {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
 }
 
 /* Subtle floating on the whole map */
@@ -1073,6 +1149,76 @@ img { max-width: 100%; display: block; }
 }
 
 .case-body > p:last-child { color: var(--color-text-2); font-size: 13px; line-height: 1.6; }
+
+/* Case expand details */
+.case-expand {
+  margin-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 13px;
+}
+
+.case-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 0;
+  color: var(--color-red);
+  font-family: var(--font-body, Inter), 'PingFang SC', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  transition: color 0.3s var(--ease-out);
+}
+.case-toggle:hover { color: #ff4750; }
+.case-toggle span {
+  background: linear-gradient(to right, var(--color-red), #ff4750);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.case-toggle svg { transition: transform 0.35s var(--ease-out); flex: none; }
+.case-card.open .case-toggle svg { transform: rotate(180deg); }
+
+.case-details {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--ease-out);
+}
+.case-card.open .case-details { grid-template-rows: 1fr; }
+.case-details > div { overflow: hidden; }
+
+.case-details ul {
+  list-style: none;
+  margin: 14px 0 2px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.case-details li {
+  position: relative;
+  padding-left: 19px;
+  color: var(--color-text-2);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.case-details li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid var(--color-red);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
 
 /* Team */
 .team { background: linear-gradient(to bottom, var(--color-bg), #0e0506 50%, var(--color-bg)); }
