@@ -695,8 +695,8 @@ img { max-width: 100%; display: block; }
 /* Global */
 .global-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
   align-items: start;
 }
 
@@ -704,13 +704,13 @@ img { max-width: 100%; display: block; }
   position: relative;
   display: grid;
   place-items: center;
-  padding-top: 20px;
+  padding-top: 12px;
 }
 
 /* Global map — Beijing-centric radiation (dot-matrix world map) */
 .globe-svg {
   width: 100%;
-  max-width: 620px;
+  max-width: 760px;
   height: auto;
   filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5));
 }
@@ -1493,7 +1493,8 @@ img { max-width: 100%; display: block; }
   .timeline-item:nth-child(odd) .ti-dot, .timeline-item:nth-child(even) .ti-dot { left: -8px; right: auto; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .pt-item { font-size: 20px; }
-  .globe-svg { max-width: 380px; }
+  .globe-svg { max-width: none; width: 100%; }
+  .global-visual { margin: 0 -4vw; width: calc(100% + 8vw); }
   .team-heading { font-size: 22px; }
   .capability-grid { grid-template-columns: 1fr; }
   .capability-block { margin-bottom: 56px; }
