@@ -449,7 +449,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // Team group photo: default scroll position = center of the panorama,
   // so the most important part of the group shot is visible on load.
   initTeamPhotoCenter();
+
+  // Media placeholders: shimmer until decoded (perceived-speed improvement)
+  initMediaShimmer();
 });
+
+// Show a subtle shimmer on media holders while their image is still loading.
+// The class is removed as soon as the image decodes, so no animation keeps running.
+function initMediaShimmer() {
+  const imgs = document.querySelectorAll('.case-media img, .team-photo-frame img, .more-media img');
+  imgs.forEach(img => {
+    const holder = img.closest('.case-media, .team-photo-frame, .more-media') || img.parentElement;
+    if (!holder) return;
+    holder.classList.add('media-loading');
+    const done = () => holder.classList.remove('media-loading');
+    if (img.complete && img.naturalWidth > 0) { done(); return; }
+    img.addEventListener('load', done, { once: true });
+    img.addEventListener('error', done, { once: true });
+  });
+}
 
 function initCaseExpand() {
   const casesSection = document.querySelector('.cases');
