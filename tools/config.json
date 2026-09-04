@@ -1,5 +1,5 @@
 {
-  "_comment": "HEYDAY 官网多语言文案工作流配置。繁体中文(zh)是唯一来源，en/ru/uz 由脚本自动同步。",
+  "_comment": "HEYDAY 官网多语言文案工作流配置。繁体中文(zh)是唯一来源，en/uz 由脚本自动同步。",
 
   "site": {
     "name": "heyday-site",
@@ -9,8 +9,8 @@
     "pending_file": "content/pending.json",
     "dict_var": "I18N",
     "source_lang": "zh",
-    "target_langs": ["en", "ru", "uz"],
-    "all_langs": ["en", "zh", "ru", "uz"]
+    "target_langs": ["en", "uz"],
+    "all_langs": ["en", "zh", "uz"]
   },
 
   "rules": {

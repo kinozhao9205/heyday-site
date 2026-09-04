@@ -44,7 +44,6 @@ DEFAULT_CONFIG = os.path.join(HERE, 'config.json')
 LANG_NAMES = {
     'en': 'English',
     'zh': '繁體中文',
-    'ru': 'Russian (Русский)',
     'uz': "Uzbek (O'zbekcha, 拉丁字母)",
 }
 
@@ -79,8 +78,8 @@ class Workflow:
         self.glossary_path = os.path.join(HERE, 'glossary.json')
 
         self.src = self.site.get('source_lang', 'zh')
-        self.targets = self.site.get('target_langs', ['en', 'ru', 'uz'])
-        self.all_langs = self.site.get('all_langs', ['en', 'zh', 'ru', 'uz'])
+        self.targets = self.site.get('target_langs', ['en', 'uz'])
+        self.all_langs = self.site.get('all_langs', ['en', 'zh', 'uz'])
 
         self.f = I18NFile(self.i18n_path, self.site.get('dict_var', 'I18N'))
         self.f.lang_order = self.all_langs
@@ -334,7 +333,7 @@ class Workflow:
 
     # ---------------- translate ----------------
     def cmd_translate(self, mode=None, export=False):
-        title('translate：繁中 → 英/俄/乌兹')
+        title('translate：繁中 → 英/乌兹')
         mode = mode or self.tcfg.get('mode', 'api')
 
         if not os.path.exists(self.csv_path):
@@ -417,9 +416,9 @@ class Workflow:
             items.append(row)
         obj = {
             '_instruction': (
-                '请把每条的 en / ru / uz 填好（繁中 zh 是原文，不要改）。'
+                '请把每条的 en / uz 填好（繁中 zh 是原文，不要改）。'
                 '规则：品牌名与缩写保持原样；用术语表的固定译法；'
-                '保留 HTML 标签与占位符；俄文用西里尔字母，乌兹别克文用拉丁字母。'
+                '保留 HTML 标签与占位符；乌兹别克文用拉丁字母。'
                 '填完后运行 python3 tools/i18n.py apply 回填。'
             ),
             'generated_at': datetime.datetime.now().isoformat(timespec='seconds'),
@@ -521,7 +520,7 @@ class Workflow:
             '3. 保留原文的 HTML 标签、换行符、占位符（如 {xxx}、%s）与标点风格',
             '4. 不要添加原文没有的信息，不要写解释，不要改 key',
             '5. 语气专业、简洁，符合官网品牌调性；长度与原文相当',
-            '6. 俄文用西里尔字母，乌兹别克文用乌兹别克斯坦现行拉丁字母',
+            '6. 乌兹别克文用乌兹别克斯坦现行拉丁字母',
             '',
             f'严格输出 JSON，格式：{{"translations": {{"<原文key>": {{'
             + ', '.join(f'"{l}": "译文"' for l in self.targets) + '}}}}}}',
@@ -664,7 +663,7 @@ def main():
         log(f'keep_as_is（{len(g.get("keep_as_is", []))}）: {", ".join(g.get("keep_as_is", []))}')
         log(f'terms（{len(g.get("terms", {}))}）:')
         for k, v in g.get('terms', {}).items():
-            log(f'  {k} → ' + ' / '.join(f'{l}:{v.get(l)}' for l in ['en', 'ru', 'uz'] if v.get(l)))
+            log(f'  {k} → ' + ' / '.join(f'{l}:{v.get(l)}' for l in ['en', 'uz'] if v.get(l)))
         log(f'\n编辑术语表：{wf.glossary_path}')
         return 0
     if args.cmd == 'run':
