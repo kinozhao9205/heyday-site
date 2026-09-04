@@ -145,7 +145,7 @@ class Deployer:
     def pack(self):
         tarball = f'/tmp/heyday_site_{self.stamp}.tar.gz'
         excludes = ["--exclude=.git", "--exclude=.DS_Store", "--exclude=preview",
-                    "--exclude=content", "--exclude=tools", "--exclude=*.bak"]
+                    "--exclude=content", "--exclude=tools", "--exclude=*.bak*"]
         cmd = f'cd "{SITE}" && tar czf {tarball} {" ".join(excludes)} .'
         rc, out, err = subprocess.run(cmd, shell=True, capture_output=True,
                                       text=True).returncode, '', ''
