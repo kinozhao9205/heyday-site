@@ -1,0 +1,78 @@
+{
+  "_comment": "HEYDAY 官网多语言文案工作流配置。繁体中文(zh)是唯一来源，en/ru/uz 由脚本自动同步。",
+
+  "site": {
+    "name": "heyday-site",
+    "i18n_file": "js/i18n.js",
+    "index_file": "index.html",
+    "content_csv": "content/zh.csv",
+    "pending_file": "content/pending.json",
+    "dict_var": "I18N",
+    "source_lang": "zh",
+    "target_langs": ["en", "ru", "uz"],
+    "all_langs": ["en", "zh", "ru", "uz"]
+  },
+
+  "rules": {
+    "_comment": "红线规则：i18n 字典里禁止出现简体中文。默认走保守的纯字形转换，不做词汇级替换",
+    "auto_simplified_to_traditional": true,
+    "opencc_config": "s2t",
+    "conversion_exceptions": ["群", "台"],
+    "protect_phrases": ["馬德里", "塔什干", "公里", "英里", "海里", "風采", "神采", "文采", "豐富多采"],
+    "aggressive": false,
+    "forbid_simplified": true,
+    "keep_placeholders": true,
+    "_comment3": "转换后校正（会覆盖默认表，新增词写这里）：布在表示发布/布局/宣布等动词义时繁体用「佈」；布哈拉(Bukhara)等地名保留「布」",
+    "post_corrections": {
+      "聯系": "聯絡",
+      "爲": "為",
+      "發布": "發佈",
+      "布局": "佈局",
+      "宣布": "宣佈",
+      "公布": "公佈",
+      "分布": "分佈"
+    },
+    "_comment2": "标点规范：全站统一用『』，不用「」。每次 sync 会自动纠正，且仅改标点不会触发重译",
+    "punctuation_map": {
+      "「": "『",
+      "」": "』"
+    }
+  },
+
+  "translate": {
+    "_comment": "mode=api 走接口全自动；mode=export 只导出待译清单交给 AI 翻译",
+    "mode": "api",
+    "provider": "deepseek",
+    "base_url": "https://api.deepseek.com/v1",
+    "model": "deepseek-chat",
+    "api_key": "",
+    "api_key_env": "HEYDAY_I18N_API_KEY",
+    "batch_size": 20,
+    "concurrency": 4,
+    "temperature": 0.2,
+    "max_retries": 3,
+    "timeout": 120
+  },
+
+  "deploy": {
+    "aliyun": {
+      "host": "47.93.48.153",
+      "user": "root",
+      "password": "",
+      "password_env": "HEYDAY_SSH_PASS",
+      "remote_dir": "/www/wwwroot/heydaygroup",
+      "backup_dir": "/www/backup",
+      "remote_tmp": "/tmp"
+    },
+    "github": {
+      "remote": "origin",
+      "branch": "main",
+      "ssh_over_443": true
+    },
+    "cdn_version": {
+      "_comment": "部署时自动把 index.html 里的 ?v=xxx 版本号刷成新时间戳，破浏览器缓存",
+      "enabled": true,
+      "patterns": ["?v=", "v="]
+    }
+  }
+}

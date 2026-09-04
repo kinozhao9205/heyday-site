@@ -1,0 +1,44 @@
+{
+  "_comment": "术语表：约束 AI 翻译的一致性。keep_as_is 各语言保持原样；terms 按语言给固定译法。可直接编辑追加。",
+
+  "keep_as_is": [
+    "HEYDAY", "HEYDAY GROUP", "IP", "AI", "UGC", "KOL", "CRM",
+    "BYD", "FANGCHENGBAO", "DENZA", "YANGWANG", "CATL", "GEELY", "YADEA",
+    "BAOJUN", "WULING", "Wuling", "Wuliangye", "Midea", "COLMO",
+    "FAW", "GAC", "Honda", "Toyota", "TOSHKENT"
+  ],
+
+  "terms": {
+    "盛世前程": { "en": "HEYDAY GROUP", "ru": "HEYDAY GROUP", "uz": "HEYDAY GROUP" },
+    "體系化營銷": { "en": "systematic marketing", "ru": "системный маркетинг", "uz": "tizimli marketing" },
+    "體驗營銷": { "en": "experiential marketing", "ru": "событийный маркетинг", "uz": "tajribaviy marketing" },
+    "整合營銷": { "en": "integrated marketing", "ru": "интегрированный маркетинг", "uz": "integratsiyalashgan marketing" },
+    "場景": { "en": "scenario", "ru": "сценарий", "uz": "ssenariy" },
+    "內容策略": { "en": "content strategy", "ru": "контент-стратегия", "uz": "kontent strategiyasi" },
+    "多管道分發": { "en": "multi-channel distribution", "ru": "многоканальное распространение", "uz": "ko'p kanalli tarqatish" },
+    "展具": { "en": "exhibit", "ru": "экспонат", "uz": "eksponat" },
+    "自動化展具": { "en": "automated exhibit", "ru": "автоматизированный стенд", "uz": "avtomatlashtirilgan eksponat" },
+    "唐戰番邦": { "en": "Tang vs. foreign rivals", "ru": "Тан против иноземных брендов", "uz": "Tang chet brendlariga qarshi" },
+    "萬店升級": { "en": "ten-thousand-store upgrade", "ru": "обновление десяти тысяч магазинов", "uz": "o'n ming do'konni yangilash" },
+    "田忌賽馬": { "en": "outmaneuver with asymmetric strategy", "ru": "асимметричная стратегия", "uz": "kuchli raqibni aql bilan yengish" },
+
+    "北京": { "en": "Beijing", "ru": "Пекин", "uz": "Pekin" },
+    "上海": { "en": "Shanghai", "ru": "Шанхай", "uz": "Shanxay" },
+    "瀋陽": { "en": "Shenyang", "ru": "Шэньян", "uz": "Shenyan" },
+    "廣州": { "en": "Guangzhou", "ru": "Гуанчжоу", "uz": "Guanchjou" },
+    "中國香港": { "en": "Hong Kong, China", "ru": "Гонконг, Китай", "uz": "Xitoy Gonkongi" },
+    "香港": { "en": "Hong Kong, China", "ru": "Гонконг, Китай", "uz": "Xitoy Gonkongi" },
+    "馬德里": { "en": "Madrid", "ru": "Мадрид", "uz": "Madrid" },
+    "塔什干": { "en": "Tashkent", "ru": "Ташкент", "uz": "Toshkent" },
+    "吉隆坡": { "en": "Kuala Lumpur", "ru": "Куала-Лумпур", "uz": "Kuala-Lumpur" },
+    "西班牙": { "en": "Spain", "ru": "Испания", "uz": "Ispaniya" },
+    "馬來西亞": { "en": "Malaysia", "ru": "Малайзия", "uz": "Malayziya" },
+    "烏茲別克": { "en": "Uzbekistan", "ru": "Узбекистан", "uz": "O'zbekiston" },
+
+    "歐洲": { "en": "Europe", "ru": "Европа", "uz": "Yevropa" },
+    "中亞": { "en": "Central Asia", "ru": "Центральная Азия", "uz": "Markaziy Osiyo" },
+    "東南亞": { "en": "Southeast Asia", "ru": "Юго-Восточная Азия", "uz": "Janubi-Sharqiy Osiyo" },
+    "美洲": { "en": "Americas", "ru": "Америка", "uz": "Amerika" },
+    "北美": { "en": "North America", "ru": "Северная Америка", "uz": "Shimoliy Amerika" }
+  }
+}

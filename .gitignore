@@ -1,2 +1,7 @@
 preview/
 .DS_Store
+# 工作流中间文件（本地用，不上传）
+content/pending.json
+content/pending_done.json
+content/tm.json
+js/*.bak

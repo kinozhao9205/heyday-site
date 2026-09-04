@@ -1302,8 +1302,8 @@ img { max-width: 100%; display: block; }
   overflow-y: hidden;
   border-radius: 20px;
   border: 1px solid var(--color-border);
-  /* 背景渐变匹配新全景合影左右边缘色（左 #941519 → 右 #931519），
-     滚动到两端时图片与背景同色系，拼接过渡自然 */
+  /* 背景漸變匹配新全景合影左右邊緣色（左 #941519 → 右 #931519），
+     滾動到兩端時圖片與背景同色系，拼接過渡自然 */
   background: linear-gradient(90deg, #941519 0%, #931519 100%);
   box-shadow: 0 30px 80px rgba(0,0,0,0.55);
   scrollbar-width: thin;
@@ -1319,7 +1319,7 @@ img { max-width: 100%; display: block; }
   width: auto;
   max-width: none;
   display: block;
-  /* 图片左右两端渐隐，平滑融入容器背景色，避免端部硬切 */
+  /* 圖片左右兩端漸隱，平滑融入容器背景色，避免端部硬切 */
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 2.5%, #000 97.5%, transparent 100%);
   mask-image: linear-gradient(90deg, transparent 0, #000 2.5%, #000 97.5%, transparent 100%);
 }
@@ -2063,9 +2063,9 @@ video.pan-y {
   .partner-categories { grid-template-columns: repeat(4, 1fr); }
 }
 
-/* ==== 图片加载微光占位（感知速度优化）=========================
-   图片解码完成前显示流动微光，完成后由 main.js initMediaShimmer()
-   移除 .media-loading，动画随之停止，不常驻消耗 CPU。 */
+/* ==== 圖片加載微光佔位（感知速度優化）=========================
+   圖片解碼完成前顯示流動微光，完成後由 main.js initMediaShimmer()
+   移除 .media-loading，動畫隨之停止，不常駐消耗 CPU。 */
 .case-media.media-loading::after,
 .team-photo-frame.media-loading::after,
 .more-media.media-loading::after {
