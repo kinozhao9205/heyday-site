@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEYDAY 網站導航 | HEYDAY Site Directory</title>
+  <meta name="description" content="HEYDAY GROUP 全站入口導航：全新版官網、AI 案例視頻站、視頻推廣站（國內 / 海外雙地址，支持掃碼訪問）。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #070707;
+      --color-card: #121212;
+      --color-card-2: #181818;
+      --color-red: #e60012;
+      --color-red-dark: #b3000e;
+      --color-text: #ffffff;
+      --color-text-2: #a0a0a0;
+      --color-text-3: #666666;
+      --color-border: rgba(255, 255, 255, 0.08);
+      --color-border-hover: rgba(230, 0, 18, 0.45);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --font-body: 'Inter', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans CJK TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-display: 'Montserrat', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans CJK TC', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        radial-gradient(circle at 50% 0%, rgba(230, 0, 18, 0.10) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, #0d0507 0%, #070707 65%);
+      background-attachment: fixed;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    /* ---------- Header ---------- */
+    .head {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .head-logo {
+      height: 46px;
+      width: auto;
+      margin-bottom: 26px;
+      opacity: 0.96;
+    }
+    .head h1 {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+    .head h1 em {
+      font-style: normal;
+      color: var(--color-red);
+    }
+    .head .sub {
+      color: var(--color-text-2);
+      font-size: 15px;
+      letter-spacing: 0.6px;
+    }
+    .head .divider {
+      width: 56px;
+      height: 3px;
+      background: var(--color-red);
+      margin: 22px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ---------- Site cards ---------- */
+    .grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .site-card {
+      background: linear-gradient(160deg, var(--color-card-2), var(--color-card));
+      border: 1px solid var(--color-border);
+      border-radius: 18px;
+      padding: 28px 30px 30px;
+      transition: border-color .35s var(--ease-out), transform .35s var(--ease-out), box-shadow .35s var(--ease-out);
+    }
+    .site-card:hover {
+      border-color: var(--color-border-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.55);
+    }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .idx {
+      flex: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(140deg, var(--color-red), var(--color-red-dark));
+      box-shadow: 0 6px 18px rgba(230, 0, 18, 0.28);
+    }
+    .card-head h2 {
+      font-family: var(--font-display);
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      line-height: 1.3;
+    }
+    .card-head .desc {
+      color: var(--color-text-3);
+      font-size: 13.5px;
+      margin-top: 3px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ---------- QR row ---------- */
+    .qr-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .qr-item {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      transition: border-color .3s var(--ease-out), background .3s var(--ease-out);
+    }
+    .qr-item:hover {
+      border-color: var(--color-border-hover);
+      background: rgba(230, 0, 18, 0.05);
+    }
+    .qr-box {
+      width: 152px;
+      height: 152px;
+      margin: 0 auto 14px;
+      padding: 8px;
+      background: #ffffff;
+      border-radius: 12px;
+      cursor: zoom-in;
+      transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out);
+    }
+    .qr-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 28px rgba(230, 0, 18, 0.22);
+    }
+    .qr-box img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    .qr-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      color: var(--color-red);
+      border: 1px solid rgba(230, 0, 18, 0.5);
+      background: rgba(230, 0, 18, 0.09);
+      padding: 3px 11px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    .qr-url {
+      display: block;
+      font-size: 12.5px;
+      color: var(--color-text-2);
+      word-break: break-all;
+      line-height: 1.5;
+      margin-bottom: 14px;
+      min-height: 38px;
+    }
+    .qr-url:hover { color: var(--color-text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 9px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: var(--color-text);
+      transition: all .3s var(--ease-out);
+    }
+    .btn:hover {
+      background: var(--color-red);
+      border-color: var(--color-red);
+      box-shadow: 0 8px 22px rgba(230, 0, 18, 0.32);
+    }
+    .btn svg { width: 13px; height: 13px; }
+
+    /* ---------- Tip & footer ---------- */
+    .tip {
+      margin-top: 34px;
+      text-align: center;
+      color: var(--color-text-3);
+      font-size: 13px;
+      letter-spacing: 0.4px;
+    }
+    footer {
+      margin-top: 46px;
+      padding-top: 26px;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+      color: var(--color-text-3);
+      font-size: 12.5px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ---------- Language switcher (与官网同款悬浮胶囊) ---------- */
+    .lang-switcher {
+      position: fixed;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 5px;
+      border-radius: 999px;
+      background: rgba(18, 18, 18, 0.92);
+      border: 1px solid var(--color-border);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.5);
+    }
+    .ls-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--color-text-3);
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      transition: color .28s var(--ease-out), background .28s var(--ease-out);
+    }
+    .ls-btn:hover { color: var(--color-text); }
+    .ls-btn.active {
+      color: #fff;
+      background: var(--color-red);
+      box-shadow: 0 4px 14px rgba(230, 0, 18, 0.34);
+    }
+    .ls-globe { width: 14px; height: 14px; }
+    .ls-divider { width: 1px; height: 15px; background: var(--color-border); }
+
+    /* ---------- Lightbox ---------- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(6px);
+      cursor: zoom-out;
+      padding: 24px;
+    }
+    .lightbox.show { display: flex; }
+    .lightbox-inner {
+      background: #fff;
+      padding: 16px;
+      border-radius: 18px;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+      animation: popIn .3s var(--ease-out);
+    }
+    .lightbox-inner img { width: 100%; display: block; border-radius: 8px; }
+    .lightbox-cap {
+      margin-top: 14px;
+      color: #111;
+      font-size: 13px;
+      font-weight: 600;
+      word-break: break-all;
+    }
+    .lightbox-hint {
+      margin-top: 6px;
+      color: #888;
+      font-size: 11.5px;
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 760px) {
+      .wrap { padding: 40px 18px 64px; }
+      .head-logo { height: 36px; margin-bottom: 20px; }
+      .head h1 { font-size: 27px; }
+      .head .sub { font-size: 13.5px; }
+      .site-card { padding: 22px 18px 24px; border-radius: 16px; }
+      .card-head { gap: 12px; margin-bottom: 20px; padding-bottom: 16px; }
+      .idx { width: 38px; height: 38px; font-size: 15px; border-radius: 10px; }
+      .card-head h2 { font-size: 18.5px; }
+      .card-head .desc { font-size: 12.5px; }
+      .qr-row { gap: 14px; }
+      .qr-item { padding: 16px 14px; }
+      .qr-row { grid-template-columns: 1fr; gap: 16px; }
+      .qr-box { width: 168px; height: 168px; }
+      .qr-url { font-size: 12.5px; min-height: 0; }
+      .btn { width: 100%; padding: 10px 14px; }
+      .lang-switcher {
+        right: 50%;
+        top: auto;
+        bottom: 16px;
+        transform: translateX(50%);
+      }
+      .ls-btn { padding: 7px 13px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <header class="head">
+      <img class="head-logo" src="assets/logo-white-horizontal.png" alt="HEYDAY GROUP">
+      <h1 data-i18n="nav_title">HEYDAY <em>網站導航</em></h1>
+      <p class="sub" data-i18n="nav_sub">盛世前程全站入口一覽 · 支持手機掃碼直達</p>
+      <div class="divider"></div>
+    </header>
+
+    <main class="grid">
+
+      <!-- 01 全新版官網 -->
+      <section class="site-card">
+        <div class="card-head">
+          <span class="idx">01</span>
+          <div>
+            <h2 data-i18n="s1_name">HEYDAY 全新版官網</h2>
+            <p class="desc" data-i18n="s1_desc">品牌形象官網 · 中／英／烏茲別克三語</p>
+          </div>
+        </div>
+        <div class="qr-row">
+          <div class="qr-item">
+            <div class="qr-box" data-zoom="assets/qr_site_cn.png" data-cap="https://heydaygroup.bydtyr.com/">
+              <img src="assets/qr_site_cn.png" alt="官網國內地址二維碼" loading="lazy">
+            </div>
+            <span class="qr-tag" data-i18n="tag_cn">國內地址</span>
+            <a class="qr-url" href="https://heydaygroup.bydtyr.com/" target="_blank" rel="noopener">heydaygroup.bydtyr.com</a>
+            <a class="btn" href="https://heydaygroup.bydtyr.com/" target="_blank" rel="noopener">
+              <span data-i18n="btn_open">開啟</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+            </a>
+          </div>
+          <div class="qr-item">
+            <div class="qr-box" data-zoom="assets/qr_site_gh.png" data-cap="https://kinozhao9205.github.io/heyday-site/">
+              <img src="assets/qr_site_gh.png" alt="官網海外地址二維碼" loading="lazy">
+            </div>
+            <span class="qr-tag" data-i18n="tag_gh">海外地址</span>
+            <a class="qr-url" href="https://kinozhao9205.github.io/heyday-site/" target="_blank" rel="noopener">kinozhao9205.github.io/heyday-site</a>
+            <a class="btn" href="https://kinozhao9205.github.io/heyday-site/" target="_blank" rel="noopener">
+              <span data-i18n="btn_open">開啟</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 AI 案例視頻站 -->
+      <section class="site-card">
+        <div class="card-head">
+          <span class="idx">02</span>
+          <div>
+            <h2 data-i18n="s2_name">HEYDAY AI 案例視頻站</h2>
+            <p class="desc" data-i18n="s2_desc">AI 創意與案例視頻合集 · 六大分類</p>
+          </div>
+        </div>
+        <div class="qr-row">
+          <div class="qr-item">
+            <div class="qr-box" data-zoom="assets/qr_ai_cn.png" data-cap="http://video.bydtyr.com/">
+              <img src="assets/qr_ai_cn.png" alt="AI案例視頻站國內地址二維碼" loading="lazy">
+            </div>
+            <span class="qr-tag" data-i18n="tag_cn">國內地址</span>
+            <a class="qr-url" href="http://video.bydtyr.com/" target="_blank" rel="noopener">video.bydtyr.com</a>
+            <a class="btn" href="http://video.bydtyr.com/" target="_blank" rel="noopener">
+              <span data-i18n="btn_open">開啟</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+            </a>
+          </div>
+          <div class="qr-item">
+            <div class="qr-box" data-zoom="assets/qr_ai_gh.png" data-cap="https://kinozhao9205.github.io/heyday-videos/">
+              <img src="assets/qr_ai_gh.png" alt="AI案例視頻站海外地址二維碼" loading="lazy">
+            </div>
+            <span class="qr-tag" data-i18n="tag_gh">海外地址</span>
+            <a class="qr-url" href="https://kinozhao9205.github.io/heyday-videos/" target="_blank" rel="noopener">kinozhao9205.github.io/heyday-videos</a>
+            <a class="btn" href="https://kinozhao9205.github.io/heyday-videos/" target="_blank" rel="noopener">
+              <span data-i18n="btn_open">開啟</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 視頻推廣站 -->
+      <section class="site-card">
+        <div class="card-head">
+          <span class="idx">03</span>
+          <div>
+            <h2 data-i18n="s3_name">HEYDAY 視頻推廣站</h2>
+            <p class="desc" data-i18n="s3_desc">盛世推廣案例視頻集 · 分享轉發專用</p>
+          </div>
+        </div>
+        <div class="qr-row">
+          <div class="qr-item">
+            <div class="qr-box" data-zoom="assets/qr_promo_cn.png" data-cap="https://tuiguang.bydtyr.com/">
+              <img src="assets/qr_promo_cn.png" alt="視頻推廣站國內地址二維碼" loading="lazy">
+            </div>
+            <span class="qr-tag" data-i18n="tag_cn">國內地址</span>
+            <a class="qr-url" href="https://tuiguang.bydtyr.com/" target="_blank" rel="noopener">tuiguang.bydtyr.com</a>
+            <a class="btn" href="https://tuiguang.bydtyr.com/" target="_blank" rel="noopener">
+              <span data-i18n="btn_open">開啟</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+            </a>
+          </div>
+          <div class="qr-item">
+            <div class="qr-box" data-zoom="assets/qr_promo_gh.png" data-cap="https://kinozhao9205.github.io/shengshi-videos/">
+              <img src="assets/qr_promo_gh.png" alt="視頻推廣站海外地址二維碼" loading="lazy">
+            </div>
+            <span class="qr-tag" data-i18n="tag_gh">海外地址</span>
+            <a class="qr-url" href="https://kinozhao9205.github.io/shengshi-videos/" target="_blank" rel="noopener">kinozhao9205.github.io/shengshi-videos</a>
+            <a class="btn" href="https://kinozhao9205.github.io/shengshi-videos/" target="_blank" rel="noopener">
+              <span data-i18n="btn_open">開啟</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <p class="tip" data-i18n="nav_tip">提示：點擊二維碼可放大，使用手機相機掃描即可直接訪問。</p>
+
+    <footer>
+      <span data-i18n="foot_brand">HEYDAY GROUP 盛世前程</span> · <span data-i18n="foot_rights">版權所有</span>
+    </footer>
+  </div>
+
+  <!-- Language Floating Switcher -->
+  <div class="lang-switcher" role="group" aria-label="Language switcher">
+    <button class="ls-btn" data-lang-btn="en" aria-label="Switch to English">
+      <svg class="ls-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      <span>EN</span>
+    </button>
+    <div class="ls-divider"></div>
+    <button class="ls-btn" data-lang-btn="zh" aria-label="切換至繁體中文">
+      <svg class="ls-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      <span>繁</span>
+    </button>
+    <div class="ls-divider"></div>
+    <button class="ls-btn" data-lang-btn="uz" aria-label="O'zbek tiliga o'tish">
+      <svg class="ls-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      <span>UZ</span>
+    </button>
+  </div>
+
+  <!-- QR Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-inner">
+      <img id="lbImg" src="" alt="QR code">
+      <div class="lightbox-cap" id="lbCap"></div>
+      <div class="lightbox-hint" data-i18n="lb_hint">點擊任意處關閉</div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var DICT = {
+      zh: {
+        nav_title: 'HEYDAY <em>網站導航</em>',
+        nav_sub: '盛世前程全站入口一覽 · 支持手機掃碼直達',
+        s1_name: 'HEYDAY 全新版官網',
+        s1_desc: '品牌形象官網 · 中／英／烏茲別克三語',
+        s2_name: 'HEYDAY AI 案例視頻站',
+        s2_desc: 'AI 創意與案例視頻合集 · 六大分類',
+        s3_name: 'HEYDAY 視頻推廣站',
+        s3_desc: '盛世推廣案例視頻集 · 分享轉發專用',
+        tag_cn: '國內地址',
+        tag_gh: '海外地址',
+        btn_open: '開啟',
+        nav_tip: '提示：點擊二維碼可放大，使用手機相機掃描即可直接訪問。',
+        foot_brand: 'HEYDAY GROUP 盛世前程',
+        foot_rights: '版權所有',
+        lb_hint: '點擊任意處關閉'
+      },
+      en: {
+        nav_title: 'HEYDAY <em>Site Directory</em>',
+        nav_sub: 'All HEYDAY official sites · Scan the QR code to open on mobile',
+        s1_name: 'HEYDAY New Official Website',
+        s1_desc: 'Brand website · Chinese / English / Uzbek',
+        s2_name: 'HEYDAY AI Case Video Site',
+        s2_desc: 'AI creative & case video collection · 6 categories',
+        s3_name: 'HEYDAY Video Promotion Site',
+        s3_desc: 'Promotional case video collection · Built for sharing',
+        tag_cn: 'CHINA',
+        tag_gh: 'OVERSEAS',
+        btn_open: 'OPEN',
+        nav_tip: 'Tip: tap a QR code to enlarge it, then scan with your phone camera.',
+        foot_brand: 'HEYDAY GROUP',
+        foot_rights: 'All rights reserved',
+        lb_hint: 'Tap anywhere to close'
+      },
+      uz: {
+        nav_title: 'HEYDAY <em>Saytlar Navigatsiyasi</em>',
+        nav_sub: 'Barcha HEYDAY rasmiy saytlari · Telefonda ochish uchun QR skanerlang',
+        s1_name: 'HEYDAY Yangi Rasmiy Sayti',
+        s1_desc: 'Brend sayti · Xitoy / Ingliz / Oʻzbek tillarida',
+        s2_name: 'HEYDAY AI Keys Video Sayti',
+        s2_desc: 'AI va keys videolar toʻplami · 6 ta boʻlim',
+        s3_name: 'HEYDAY Video Reklama Sayti',
+        s3_desc: 'Reklama video toʻplami · Ulashish uchun',
+        tag_cn: 'XITOY',
+        tag_gh: 'XORIJ',
+        btn_open: 'OCHISH',
+        nav_tip: 'Maslahat: QR kodni bosing va kattalashtiring, soʻng telefon kamerasi bilan skanerlang.',
+        foot_brand: 'HEYDAY GROUP',
+        foot_rights: 'Barcha huquqlar himoyalangan',
+        lb_hint: 'Yopish uchun istalgan joyga bosing'
+      }
+    };
+
+    var HTML_TAGS = { html: document.documentElement };
+    var TITLES = {
+      zh: 'HEYDAY 網站導航 | 盛世前程全站入口',
+      en: 'HEYDAY Site Directory | All Official Sites',
+      uz: 'HEYDAY Saytlar Navigatsiyasi | Barcha Rasmiy Saytlar'
+    };
+
+    function apply(lang) {
+      var d = DICT[lang] || DICT.zh;
+      document.documentElement.lang = (lang === 'zh') ? 'zh-Hant' : (lang === 'uz' ? 'uz' : 'en');
+      document.title = TITLES[lang] || TITLES.zh;
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var k = el.getAttribute('data-i18n');
+        if (d[k] != null) {
+          if (d[k].indexOf('<') > -1) { el.innerHTML = d[k]; }
+          else { el.textContent = d[k]; }
+        }
+      });
+      document.querySelectorAll('.ls-btn').forEach(function (b) {
+        b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
+      });
+      try { localStorage.setItem('heyday_nav_lang', lang); } catch (e) {}
+    }
+
+    var saved = 'zh';
+    try { saved = localStorage.getItem('heyday_nav_lang') || 'zh'; } catch (e) {}
+    if (!DICT[saved]) saved = 'zh';
+    apply(saved);
+
+    document.querySelectorAll('.ls-btn').forEach(function (b) {
+      b.addEventListener('click', function () { apply(b.getAttribute('data-lang-btn')); });
+    });
+
+    // QR lightbox
+    var lb = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lbImg');
+    var lbCap = document.getElementById('lbCap');
+    document.querySelectorAll('.qr-box').forEach(function (box) {
+      box.addEventListener('click', function () {
+        lbImg.src = box.getAttribute('data-zoom');
+        lbCap.textContent = box.getAttribute('data-cap');
+        lb.classList.add('show');
+      });
+    });
+    lb.addEventListener('click', function () { lb.classList.remove('show'); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') lb.classList.remove('show');
+    });
+
+    // Logo 兜底：若上级目录 logo 不可用则退回首份拷贝
+    var logo = document.querySelector('.head-logo');
+    if (logo) {
+      logo.addEventListener('error', function () {
+        var fb = logo.getAttribute('data-fallback');
+        if (fb && logo.src.indexOf('assets/logo-white-horizontal.png') === -1) logo.src = fb;
+      });
+    }
+  })();
+  </script>
+</body>
+</html>
