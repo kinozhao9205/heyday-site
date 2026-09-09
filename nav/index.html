@@ -44,9 +44,9 @@
     a { color: inherit; text-decoration: none; }
 
     .wrap {
-      max-width: 1180px;
+      max-width: 1020px;
       margin: 0 auto;
-      padding: 56px 24px 80px;
+      padding: 48px 24px 72px;
     }
 
     /* ---------- Header ---------- */
@@ -55,18 +55,18 @@
       margin-bottom: 52px;
     }
     .head-logo {
-      height: 46px;
+      height: 40px;
       width: auto;
-      margin-bottom: 26px;
+      margin-bottom: 22px;
       opacity: 0.96;
     }
     .head h1 {
       font-family: var(--font-display);
-      font-size: 40px;
+      font-size: 33px;
       font-weight: 800;
       letter-spacing: 1px;
       line-height: 1.25;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .head h1 em {
       font-style: normal;
@@ -94,8 +94,8 @@
     .site-card {
       background: linear-gradient(160deg, var(--color-card-2), var(--color-card));
       border: 1px solid var(--color-border);
-      border-radius: 18px;
-      padding: 28px 30px 30px;
+      border-radius: 16px;
+      padding: 22px 24px 24px;
       transition: border-color .35s var(--ease-out), transform .35s var(--ease-out), box-shadow .35s var(--ease-out);
     }
     .site-card:hover {
@@ -107,36 +107,36 @@
     .card-head {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
-      padding-bottom: 20px;
+      gap: 14px;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
       border-bottom: 1px solid var(--color-border);
     }
     .idx {
       flex: none;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
       display: grid;
       place-items: center;
       font-family: var(--font-display);
-      font-size: 17px;
+      font-size: 15px;
       font-weight: 800;
       color: #fff;
       background: linear-gradient(140deg, var(--color-red), var(--color-red-dark));
-      box-shadow: 0 6px 18px rgba(230, 0, 18, 0.28);
+      box-shadow: 0 5px 14px rgba(230, 0, 18, 0.26);
     }
     .card-head h2 {
       font-family: var(--font-display);
-      font-size: 23px;
+      font-size: 19px;
       font-weight: 700;
       letter-spacing: 0.4px;
       line-height: 1.3;
     }
     .card-head .desc {
       color: var(--color-text-3);
-      font-size: 13.5px;
-      margin-top: 3px;
+      font-size: 12.5px;
+      margin-top: 2px;
       letter-spacing: 0.3px;
     }
 
@@ -149,8 +149,8 @@
     .qr-item {
       background: rgba(255, 255, 255, 0.025);
       border: 1px solid var(--color-border);
-      border-radius: 14px;
-      padding: 18px;
+      border-radius: 12px;
+      padding: 14px 12px 15px;
       text-align: center;
       transition: border-color .3s var(--ease-out), background .3s var(--ease-out);
     }
@@ -159,18 +159,18 @@
       background: rgba(230, 0, 18, 0.05);
     }
     .qr-box {
-      width: 152px;
-      height: 152px;
-      margin: 0 auto 14px;
-      padding: 8px;
+      width: 104px;
+      height: 104px;
+      margin: 0 auto 12px;
+      padding: 6px;
       background: #ffffff;
-      border-radius: 12px;
+      border-radius: 10px;
       cursor: zoom-in;
       transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out);
     }
     .qr-box:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 28px rgba(230, 0, 18, 0.22);
+      transform: scale(1.06);
+      box-shadow: 0 8px 22px rgba(230, 0, 18, 0.22);
     }
     .qr-box img {
       width: 100%;
@@ -181,24 +181,24 @@
 
     .qr-tag {
       display: inline-block;
-      font-size: 12px;
+      font-size: 10.5px;
       font-weight: 600;
-      letter-spacing: 1.4px;
+      letter-spacing: 1.2px;
       color: var(--color-red);
       border: 1px solid rgba(230, 0, 18, 0.5);
       background: rgba(230, 0, 18, 0.09);
-      padding: 3px 11px;
+      padding: 2px 9px;
       border-radius: 999px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .qr-url {
       display: block;
-      font-size: 12.5px;
+      font-size: 11.5px;
       color: var(--color-text-2);
       word-break: break-all;
-      line-height: 1.5;
-      margin-bottom: 14px;
-      min-height: 38px;
+      line-height: 1.45;
+      margin-bottom: 12px;
+      min-height: 0;
     }
     .qr-url:hover { color: var(--color-text); }
 
@@ -206,11 +206,11 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      font-size: 13.5px;
+      gap: 6px;
+      font-size: 12.5px;
       font-weight: 600;
       letter-spacing: 0.5px;
-      padding: 9px 22px;
+      padding: 7px 18px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.22);
       color: var(--color-text);
@@ -244,44 +244,60 @@
     /* ---------- Language switcher (与官网同款悬浮胶囊) ---------- */
     .lang-switcher {
       position: fixed;
-      right: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 60;
+      right: 24px;
+      bottom: 28px;
+      z-index: 1200;
       display: flex;
       align-items: center;
       gap: 2px;
       padding: 5px;
-      border-radius: 999px;
-      background: rgba(18, 18, 18, 0.92);
-      border: 1px solid var(--color-border);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.5);
+      border-radius: 100px;
+      background: rgba(12, 12, 12, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      transition: box-shadow .4s ease, border-color .4s ease;
+    }
+    .lang-switcher:hover {
+      border-color: rgba(230, 0, 18, 0.45);
+      box-shadow: 0 14px 48px rgba(0, 0, 0, 0.6), 0 0 28px rgba(230, 0, 18, 0.22);
     }
     .ls-btn {
       display: flex;
       align-items: center;
-      gap: 5px;
-      background: none;
+      gap: 7px;
+      padding: 9px 16px;
       border: none;
+      border-radius: 100px;
+      background: transparent;
+      color: #9a9a9a;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
       cursor: pointer;
-      color: var(--color-text-3);
-      font-family: var(--font-body);
-      font-size: 12.5px;
-      font-weight: 600;
-      letter-spacing: 0.6px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      transition: color .28s var(--ease-out), background .28s var(--ease-out);
+      white-space: nowrap;
+      transition: color .3s ease, background .3s ease, box-shadow .3s ease;
     }
-    .ls-btn:hover { color: var(--color-text); }
-    .ls-btn.active {
-      color: #fff;
-      background: var(--color-red);
-      box-shadow: 0 4px 14px rgba(230, 0, 18, 0.34);
+    .ls-btn .ls-globe {
+      width: 0;
+      height: 15px;
+      opacity: 0;
+      flex: none;
+      transition: opacity .3s ease, width .3s ease;
     }
-    .ls-globe { width: 14px; height: 14px; }
-    .ls-divider { width: 1px; height: 15px; background: var(--color-border); }
+    .lang-switcher:hover .ls-btn .ls-globe { opacity: .8; width: 15px; }
+    .ls-btn.active { color: #fff; background: var(--color-red); box-shadow: 0 4px 18px rgba(230, 0, 18, 0.45); }
+    .ls-btn.active .ls-globe { opacity: 1; width: 15px; }
+    .ls-btn:not(.active):hover { color: #fff; }
+    .ls-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.14);
+      margin: 0 2px;
+      flex: none;
+    }
 
     /* ---------- Lightbox ---------- */
     .lightbox {
@@ -326,28 +342,27 @@
 
     /* ---------- Responsive ---------- */
     @media (max-width: 760px) {
-      .wrap { padding: 40px 18px 64px; }
-      .head-logo { height: 36px; margin-bottom: 20px; }
-      .head h1 { font-size: 27px; }
-      .head .sub { font-size: 13.5px; }
-      .site-card { padding: 22px 18px 24px; border-radius: 16px; }
-      .card-head { gap: 12px; margin-bottom: 20px; padding-bottom: 16px; }
-      .idx { width: 38px; height: 38px; font-size: 15px; border-radius: 10px; }
-      .card-head h2 { font-size: 18.5px; }
-      .card-head .desc { font-size: 12.5px; }
-      .qr-row { gap: 14px; }
-      .qr-item { padding: 16px 14px; }
-      .qr-row { grid-template-columns: 1fr; gap: 16px; }
-      .qr-box { width: 168px; height: 168px; }
-      .qr-url { font-size: 12.5px; min-height: 0; }
-      .btn { width: 100%; padding: 10px 14px; }
-      .lang-switcher {
-        right: 50%;
-        top: auto;
-        bottom: 16px;
-        transform: translateX(50%);
-      }
-      .ls-btn { padding: 7px 13px; font-size: 13px; }
+      .wrap { padding: 36px 16px 60px; }
+      .head-logo { height: 32px; margin-bottom: 18px; }
+      .head h1 { font-size: 25px; }
+      .head .sub { font-size: 13px; }
+      .site-card { padding: 18px 16px 20px; border-radius: 14px; }
+      .card-head { gap: 11px; margin-bottom: 16px; padding-bottom: 14px; }
+      .idx { width: 34px; height: 34px; font-size: 14px; border-radius: 9px; }
+      .card-head h2 { font-size: 17px; }
+      .card-head .desc { font-size: 12px; }
+      .qr-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .qr-item { padding: 12px 8px 13px; border-radius: 10px; }
+      .qr-box { width: 88px; height: 88px; padding: 5px; margin-bottom: 10px; border-radius: 8px; }
+      .qr-tag { font-size: 9.5px; padding: 2px 7px; letter-spacing: 0.8px; }
+      .qr-url { font-size: 10.5px; margin-bottom: 10px; line-height: 1.4; }
+      .btn { width: 100%; padding: 7px 10px; font-size: 11.5px; }
+      .tip { margin-top: 26px; font-size: 12px; }
+      footer { margin-top: 34px; padding-top: 20px; font-size: 11.5px; }
+      .lang-switcher { right: 16px; bottom: 18px; }
+      .ls-btn { padding: 8px 13px; font-size: 11px; letter-spacing: 1px; }
+      .lang-switcher:hover .ls-btn .ls-globe,
+      .ls-btn.active .ls-globe { opacity: 0; width: 0; }
     }
   </style>
 </head>
