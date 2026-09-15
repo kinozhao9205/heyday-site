@@ -1,5 +1,29 @@
 /* HEYDAY GROUP Official Website Scripts */
 
+/* 按访问区域自动切换三站链接：
+   海外（GitHub Pages）→ 海外镜像站；国内 → 自建服务器。
+   未匹配到海外域名时不改动 HTML 里写好的国内地址，保证禁用 JS 时仍可用。 */
+(function routeByRegion() {
+  const HOST = location.hostname || '';
+  const IS_OVERSEAS = /(^|\.)github\.io$/i.test(HOST);
+  if (!IS_OVERSEAS) return;
+  const MAP = [
+    [/^https?:\/\/video\.bydtyr\.com/i, 'https://kinozhao9205.github.io/heyday-videos'],
+    [/^https?:\/\/tuiguang\.bydtyr\.com/i, 'https://kinozhao9205.github.io/shengshi-videos'],
+    [/^https?:\/\/heydaygroup\.bydtyr\.com/i, 'https://kinozhao9205.github.io/heyday-site']
+  ];
+  document.querySelectorAll('#navbar a[href], footer a[href]').forEach((a) => {
+    const href = a.getAttribute('href');
+    if (!href) return;
+    for (const [pattern, replacement] of MAP) {
+      if (pattern.test(href)) {
+        a.setAttribute('href', href.replace(pattern, replacement).replace(/([^:])\/{2,}/g, '$1/'));
+        break;
+      }
+    }
+  });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
