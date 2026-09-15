@@ -27,7 +27,7 @@
 
   /* 三站在兩種線路下的入口地址 */
   var NODES = {
-    official: { cn: 'https://heydaygroup.bydtyr.com/', os: 'https://kinozhao9205.github.io/heyday-site/' },
+    official: { cn: 'https://heydaygroup.bydtyr.com/', os: 'https://www.heyday-global.com/' },
     ai: { cn: 'http://video.bydtyr.com/', os: 'https://kinozhao9205.github.io/heyday-videos/' },
     promo: { cn: 'https://tuiguang.bydtyr.com/', os: 'https://kinozhao9205.github.io/shengshi-videos/' }
   };
