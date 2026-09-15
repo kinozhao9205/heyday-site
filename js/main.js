@@ -1,12 +1,17 @@
 /* HEYDAY GROUP Official Website Scripts */
 
-/* 按访问区域自动切换三站链接：
-   海外（GitHub Pages）→ 海外镜像站；国内 → 自建服务器。
-   未匹配到海外域名时不改动 HTML 里写好的国内地址，保证禁用 JS 时仍可用。 */
+/* 按訪問區域自動切換三站連結：
+   預設「自動」—— 海外（GitHub Pages）→ 海外鏡像站；國內 → 自建服務器。
+   用戶在悬浮球裏手動鎖定線路後（localStorage: heyday_node_pref），以此為準。
+   未匹配到海外域名時不改動 HTML 裏寫好的國內地址，保證禁用 JS 時仍可用。 */
 (function routeByRegion() {
   const HOST = location.hostname || '';
   const IS_OVERSEAS = /(^|\.)github\.io$/i.test(HOST);
-  if (!IS_OVERSEAS) return;
+  let pref = 'auto';
+  try { pref = localStorage.getItem('heyday_node_pref') || 'auto'; } catch (e) {}
+  if (pref !== 'cn' && pref !== 'os') pref = 'auto';
+  const WANT_OVERSEAS = pref === 'os' ? true : (pref === 'cn' ? false : IS_OVERSEAS);
+  if (!WANT_OVERSEAS) return;
   const MAP = [
     [/^https?:\/\/video\.bydtyr\.com/i, 'https://kinozhao9205.github.io/heyday-videos'],
     [/^https?:\/\/tuiguang\.bydtyr\.com/i, 'https://kinozhao9205.github.io/shengshi-videos'],
@@ -27,28 +32,34 @@
 document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Preloader
+  // Preloader（換線路落地時跳過，避免每次切換都重播開場動畫）
   const preloader = document.getElementById('preloader');
   const plLogo = document.querySelector('.preloader-logo');
   const plText = document.querySelector('.preloader-text');
+  const SKIP_PRELOADER = document.documentElement.classList.contains('hop-in');
 
-  const preloaderTL = gsap.timeline({
-    onComplete: () => {
-      gsap.to(preloader, {
-        opacity: 0,
-        duration: 0.6,
-        ease: 'power2.inOut',
-        onComplete: () => {
-          preloader.style.display = 'none';
-          initHeroAnimations();
-        }
-      });
-    }
-  });
+  if (SKIP_PRELOADER) {
+    preloader.style.display = 'none';
+    if (typeof gsap !== 'undefined') initHeroAnimations();
+  } else {
+    const preloaderTL = gsap.timeline({
+      onComplete: () => {
+        gsap.to(preloader, {
+          opacity: 0,
+          duration: 0.6,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            preloader.style.display = 'none';
+            initHeroAnimations();
+          }
+        });
+      }
+    });
 
-  preloaderTL
-    .fromTo(plLogo, { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.8, ease: 'power2.out' })
-    .to(plText, { opacity: 1, duration: 0.5 }, '-=0.3');
+    preloaderTL
+      .fromTo(plLogo, { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.8, ease: 'power2.out' })
+      .to(plText, { opacity: 1, duration: 0.5 }, '-=0.3');
+  }
 
   // Navbar scroll behavior
   const navbar = document.getElementById('navbar');

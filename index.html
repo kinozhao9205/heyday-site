@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 換線路落地：跳過開場動畫 + 深色溶接遮罩（僅在 ?hop=1 時生效，讓切換無感） -->
+  <script>if(/[?&]hop=1/.test(location.search))document.documentElement.className+=' hop-in';</script>
   <title>HEYDAY GROUP | Integrated Marketing</title>
   <meta name="description" content="HEYDAY GROUP (Shengshi Qiancheng) — Integrated marketing agency with both strategic expertise and robust resources. Creating value for clients continuously for 24 years.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1337,5 +1339,6 @@ Lightweight, high-frequency sinking experiences that strongly support brand mark
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="js/i18n.js?v=20260915e"></script>
   <script src="js/main.js?v=20260915e"></script>
+  <script src="js/node-switcher.js?v=20260915e"></script>
 </body>
 </html>
