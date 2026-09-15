@@ -1452,8 +1452,25 @@ img { max-width: 100%; display: block; }
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 14px 36px;
+  gap: 28px 72px;
   margin-top: 40px;
+}
+
+.ci-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+
+.ci-group-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-red);
+  margin-bottom: 2px;
 }
 
 .ci-item {
@@ -1488,6 +1505,17 @@ img { max-width: 100%; display: block; }
 }
 
 .ft-link:hover { color: #fff; }
+
+.ft-group-label {
+  color: var(--color-red) !important;
+  font-size: 12px !important;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+.ft-group-label:first-of-type { margin-top: 0; }
 
 /* Footer */
 .footer {
@@ -1539,6 +1567,18 @@ img { max-width: 100%; display: block; }
   color: var(--color-text-3);
   font-size: 13px;
 }
+
+.footer-bottom .icp {
+  margin-top: 8px;
+}
+
+.footer-bottom .icp a {
+  color: var(--color-text-3);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-bottom .icp a:hover { color: var(--color-text-2); }
 
 /* Reveal animations */
 .reveal {
