@@ -304,7 +304,8 @@
       ft_contact_title: 'Contact',
       ft_hq1: 'Beijing · Shanghai · Shenyang · Guangzhou',
       ft_hq2: 'Hong Kong · Madrid · Tashkent · Kuala Lumpur',
-      ft_copyright: '© 2026 HEYDAY GROUP. All rights reserved.'
+      ft_copyright: '© 2026 HEYDAY GROUP. All rights reserved.',
+      nav_ai_video: 'AI Creative', nav_promo_video: 'Promo Videos'
     },
 
     /* ================= TRADITIONAL CHINESE (繁體中文) — 取自【盛世前程】品牌手冊 ================= */
@@ -607,7 +608,8 @@
       ft_contact_title: '聯繫方式',
       ft_hq1: '北京 · 上海 · 瀋陽 · 廣州',
       ft_hq2: '中國香港 · 馬德里 · 塔什干 · 吉隆坡',
-      ft_copyright: '© 2026 HEYDAY GROUP 版權所有。'
+      ft_copyright: '© 2026 HEYDAY GROUP 版權所有。',
+      nav_ai_video: 'AI創意', nav_promo_video: '推廣視頻'
     },
 
     /* ================= UZBEK (O‘zbekcha) ================= */
@@ -943,7 +945,8 @@
       ft_contact_title: 'Aloqa',
       ft_hq1: 'Pekin · Shanxay · Shenyan · Guanchjou',
       ft_hq2: 'Gonkong · Madrid · Toshkent · Kuala-Lumpur',
-      ft_copyright: '© 2026 HEYDAY GROUP. Barcha huquqlar himoyalangan.'
+      ft_copyright: '© 2026 HEYDAY GROUP. Barcha huquqlar himoyalangan.',
+      nav_ai_video: 'AI Ijod', nav_promo_video: 'Reklama Videolari'
     }
   };
 

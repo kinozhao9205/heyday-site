@@ -133,7 +133,7 @@ img { max-width: 100%; display: block; }
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 36px;
+  gap: 26px;
 }
 
 .nav-links a {
@@ -195,6 +195,17 @@ img { max-width: 100%; display: block; }
 .nav-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .nav-toggle.active span:nth-child(2) { opacity: 0; }
 .nav-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* 8 项导航（含 AI創意 / 推廣視頻）：中等屏幕收紧间距，1024px 以下切换汉堡菜单 */
+@media (max-width: 1200px) {
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.3px; }
+}
+
+@media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+}
 
 /* Buttons */
 .btn {
