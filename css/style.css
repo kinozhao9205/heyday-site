@@ -991,7 +991,7 @@ img { max-width: 100%; display: block; }
 .pcat-logo img {
   height: 100%;
   width: auto;
-  max-width: 170px;
+  max-width: 136px;
   object-fit: contain;
 }
 
