@@ -899,7 +899,7 @@ img { max-width: 100%; display: block; }
 
 .pr-logo {
   flex: 0 0 auto;
-  height: 57px;
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -911,7 +911,7 @@ img { max-width: 100%; display: block; }
 .pr-logo img {
   height: 100%;
   width: auto;
-  max-width: 240px;
+  max-width: 192px;
   object-fit: contain;
 }
 
@@ -980,7 +980,7 @@ img { max-width: 100%; display: block; }
 }
 
 .pcat-logo {
-  height: 51px;
+  height: 41px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2092,12 +2092,12 @@ video.pan-y {
 
 @media (max-width: 768px) {
   .partner-row { gap: 18px 28px; padding: 22px 12px; }
-  .pr-logo { height: 42px; }
+  .pr-logo { height: 34px; }
   .pr-text { font-size: 14px; }
   .partner-categories { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .pcat-card { padding: 14px 8px; min-height: 150px; }
   .pcat-label { font-size: 10px; min-height: 36px; }
-  .pcat-logo { height: 39px; }
+  .pcat-logo { height: 31px; }
   .pcat-logo .pr-text { font-size: 12px; }
   .team-groups { grid-template-columns: 1fr; }
   .exhibit-showcase { margin-top: 48px; }
