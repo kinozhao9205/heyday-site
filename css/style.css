@@ -911,7 +911,7 @@ img { max-width: 100%; display: block; }
 .pr-logo img {
   height: 100%;
   width: auto;
-  max-width: 160px;
+  max-width: 240px;
   object-fit: contain;
 }
 
@@ -991,7 +991,7 @@ img { max-width: 100%; display: block; }
 .pcat-logo img {
   height: 100%;
   width: auto;
-  max-width: 110px;
+  max-width: 170px;
   object-fit: contain;
 }
 
